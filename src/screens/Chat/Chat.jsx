@@ -2,10 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import CssBaseline from '@material-ui/core/CssBaseline';
-import AppBar from '@material-ui/core/AppBar';
-import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
-import { ChatDrawer } from '@src/components'
+import { ChatDrawer, AppTopBar } from '@src/components'
 
 const styles = theme => ({
     root: {
@@ -21,7 +19,7 @@ const styles = theme => ({
         flexGrow: 1,
         backgroundColor: theme.palette.background.default,
         padding: theme.spacing.unit * 3,
-    },
+    }
 });
 
 const Chat = (props) => {
@@ -30,13 +28,7 @@ const Chat = (props) => {
     return (
         <div className={classes.root}>
             <CssBaseline />
-            <AppBar position="fixed" className={classes.appBar}>
-                <Toolbar>
-                    <Typography variant="h6" color="inherit" noWrap>
-                        Gleb React Chat
-                    </Typography>
-                </Toolbar>
-            </AppBar>
+            <AppTopBar />
             <ChatDrawer/>
             <main className={classes.content}>
                 <div className={classes.toolbar} />

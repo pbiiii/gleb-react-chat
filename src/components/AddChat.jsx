@@ -16,8 +16,15 @@ const styles = theme => ({
         position: 'absolute',
     },
     modalWrapper: {
-
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
     },
+    modal: {
+        padding: theme.spacing.unit * 3,
+        width: '30%',
+        minWidth: '300px',
+    }
 });
 
 class AddChatComponent extends React.Component {
@@ -64,7 +71,7 @@ class AddChatComponent extends React.Component {
                         <TextField
                             required
                             fullWidth
-                            label="New chat"
+                            label="Chat title"
                             placeholder="Type the title..."
                             type="text"
                             margin="normal"
