@@ -43,7 +43,17 @@ const ChatDrawerComponent = ({classes}) => {
             <DrawerSearchInput />
             <Divider/>
             <ChatsList
-                chats={[]}
+                chats={[
+                    {
+                        id: 1,
+                        title: 'Test chat',
+                        createdAt: '2018-12-22 12:00'
+                    },{
+                        id: 2,
+                        title: 'Test chat 2',
+                        createdAt: '2018-12-22 12:00'
+                    },
+                ]}
             />
             <AddChat />
             <DrawerBottomNavigation/>

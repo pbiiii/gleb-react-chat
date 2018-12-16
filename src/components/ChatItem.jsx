@@ -1,18 +1,32 @@
 import React from 'react';
 import ListItem from '@material-ui/core/ListItem';
-import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
-import InboxIcon from '@material-ui/icons/MoveToInbox';
+import Avatar from "@material-ui/core/Avatar";
+import {withStyles} from "@material-ui/core/styles/index";
 
-const ChatsItemComponent = ({chat}) => {
+const styles = theme => ({
+    activeChat: {
+        backgroundColor: theme.palette.grey[200],
+    }
+});
+
+const ChatsItemComponent = ({classes, chat, active}) => {
+    const {
+        id: chatId,
+        title,
+        createdAt
+    } = chat
+    const avatarTitle = title.substring(0, 2).toUpperCase()
     return (
         <ListItem
             button
+            selected={active}
+            className={active && classes.activeChat}
         >
-            <ListItemIcon><InboxIcon/></ListItemIcon>
-            <ListItemText primary={chat.title}/>
+            <Avatar colorFrom={chatId}>{avatarTitle}</Avatar>
+            <ListItemText primary={title}/>
         </ListItem>
     );
 }
 
-export const ChatItem = ChatsItemComponent;
+export const ChatItem = withStyles(styles)(ChatsItemComponent);

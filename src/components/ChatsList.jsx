@@ -14,7 +14,8 @@ const styles = theme => ({
     },
 });
 
-const ChatsListComponent = ({chats, classes}) => {
+const ChatsListComponent = ({chats, classes, activeChat}) => {
+
     return (
         <List
             className={classes.list}
@@ -23,6 +24,7 @@ const ChatsListComponent = ({chats, classes}) => {
                 <ChatItem
                     chat={chat}
                     key={chat.id}
+                    active={activeChat && (activeChat.id === chat.id)}
                 />
             )) :
                 <Typography
