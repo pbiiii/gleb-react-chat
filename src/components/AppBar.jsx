@@ -39,7 +39,7 @@ const AppBarComponent = (
             <Toolbar>
                 {activeChat ? (
                     <React.Fragment>
-                        <Avatar colorFrom={activeChat._id}>{activeChat.title}</Avatar>
+                        <Avatar>{activeChat.title}</Avatar>
                         <Typography variant="title" className={classes.appBarTitle}>
                             {activeChat.title}
                             {/*<ChatMenu*/}
