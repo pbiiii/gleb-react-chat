@@ -1,15 +1,17 @@
 import React from 'react';
 import {withStyles} from '@material-ui/core/styles';
-import { ChatMessage } from "./ChatMessage";
+import { ChatMessage } from "./ChatMessage/ChatMessage";
 import Typography from "@material-ui/core/Typography";
+import mocks from '@src/mocks'
 
 
 const styles = theme => ({
     messagesWrapper: {
         height: '100%',
         width: '100%',
-        paddingTop: theme.spacing.unit * 3,
-        paddingBottom: '120px',
+        overflowX: 'hidden',
+        overflowY: 'scroll',
+        paddingBottom: theme.spacing.unit * 14
     },
 });
 
@@ -17,19 +19,9 @@ class ChatMessageListComponent extends React.Component {
     render() {
         const activeUser = {
             id: 1,
+            name: 'user1'
         }
-        const messages = [
-            {
-                id: 1,
-                title: 'message 1',
-                user_id: 1,
-            },
-            {
-                id: 2,
-                title: 'message 2',
-                user_id: 2
-            }
-        ]
+        const { messages } = mocks
         const {
             classes,
             // messages,
@@ -44,9 +36,8 @@ class ChatMessageListComponent extends React.Component {
                         ? messages.map(message =>
                             <ChatMessage
                                 key={message.id}
-                                message={message}
                                 activeUser={activeUser}
-                                sender={message.sender}
+                                {...message}
                             />
                         )
                         : <Typography
@@ -58,7 +49,6 @@ class ChatMessageListComponent extends React.Component {
             </div>
         )
     }
-
 }
 
 export const ChatMessageList = withStyles(styles)(ChatMessageListComponent);

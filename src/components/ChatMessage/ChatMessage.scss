@@ -1,0 +1,18 @@
+.message-wrapper {
+  display: flex;
+  align-items: center;
+  padding: 8px 24px;
+  &.from-me {
+    flex-direction: row-reverse;
+    .message {
+      margin-left: 0;
+      margin-right: 16px;
+    }
+  }
+  .message {
+    min-width: 10%;
+    max-width: 70%;
+    padding: 8px;
+    margin-left: 16px;
+  }
+}

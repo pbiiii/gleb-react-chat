@@ -2,11 +2,17 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import CssBaseline from '@material-ui/core/CssBaseline';
-import { ChatDrawer, AppTopBar, ChatMessageList } from '@src/components'
+import {
+    ChatDrawer,
+    AppTopBar,
+    ChatMessageList,
+    ChatMessageInput
+} from '@src/components'
 
 const styles = theme => ({
     root: {
         display: 'flex',
+        height: '100%',
     },
     toolbar: {
         ...theme.mixins.toolbar,
@@ -15,16 +21,19 @@ const styles = theme => ({
         alignItems: 'center',
     },
     content: {
-        flexGrow: 1,
-        backgroundColor: theme.palette.background.default,
-        padding: theme.spacing.unit * 3,
-        marginTop: theme.spacing.unit * 8,
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'flex-start',
+        paddingTop: '64px',
+        height: '100%',
+        width: '100%',
+        overflow: 'hidden',
+        position: 'relative',
     }
 });
 
 const Chat = (props) => {
     const { classes } = props;
-
     return (
         <div className={classes.root}>
             <CssBaseline />
@@ -32,6 +41,7 @@ const Chat = (props) => {
             <ChatDrawer/>
             <main className={classes.content}>
                 <ChatMessageList />
+                <ChatMessageInput />
             </main>
         </div>
     );

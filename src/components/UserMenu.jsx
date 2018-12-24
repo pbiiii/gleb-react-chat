@@ -55,8 +55,7 @@ class UserMenuComponent extends React.Component {
     render() {
         const { anchorEl } = this.state;
         return (
-            <React.Fragment
-            >
+            <React.Fragment>
                 <IconButton
                     color="inherit"
                     aria-owns={anchorEl ? 'simple-menu' : undefined}
