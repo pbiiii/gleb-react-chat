@@ -1,10 +1,19 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import { ChatScreen } from './screens'
 import * as serviceWorker from './serviceWorker';
+import { Router } from '@src/Router';
 
-ReactDOM.render(<ChatScreen />, document.getElementById('root'));
+const rootEl = document.getElementById('root')
+
+const render = (Component) => {
+    ReactDOM.render(
+        <Component />,
+        rootEl,
+    );
+};
+
+render(Router);
 
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.

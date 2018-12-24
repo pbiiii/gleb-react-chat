@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import {
@@ -46,11 +45,5 @@ const Chat = (props) => {
         </div>
     );
 }
-
-Chat.propTypes = {
-    classes: PropTypes.object.isRequired,
-};
-
-
 
 export const ChatScreen = withStyles(styles)(Chat);

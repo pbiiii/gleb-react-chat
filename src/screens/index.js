@@ -1,1 +1,2 @@
-export { ChatScreen } from './Chat/index'
+export { ChatScreen } from './Chat'
+export { AuthScreen } from './Auth'
