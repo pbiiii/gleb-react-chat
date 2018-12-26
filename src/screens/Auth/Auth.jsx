@@ -8,12 +8,10 @@ import Grid from '@material-ui/core/Grid';
 import Paper from '@material-ui/core/Paper';
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
-// import LoginForm from './LoginForm';
-// import RegisterForm from './SignupForm';
+import { AuthForm } from '@src/components';
 
 const styles = theme => ({
     paper: {
-        // eslint-disable-next-line
         marginTop: theme.spacing.unit * 3 + 64,
         width: 500,
     },
@@ -26,11 +24,39 @@ class AuthPageComponent extends React.Component {
 
     state = {
         activeTab: 0,
+        form: {
+            username: {
+                value: '',
+                isValid: true,
+            },
+            password: {
+                value: '',
+                isValid: true,
+            },
+            repeatedPassword: {
+                value: '',
+                isValid: true,
+            },
+        }
     };
 
     handleTabChange = (event, value) => {
         this.setState({ activeTab: value });
     };
+
+    onInputChange = (event) => {
+        event.preventDefault();
+        const { name, value } = event.target
+        this.setState(prevState => ({
+            form: {
+                ...prevState.form,
+                [name]: {
+                    ...prevState.form[name],
+                    value,
+                },
+            }
+        }))
+    }
 
     render() {
         const {
@@ -48,7 +74,7 @@ class AuthPageComponent extends React.Component {
                 <AppBar>
                     <Toolbar>
                         <Typography variant="title" color="inherit" style={{ flex: 1 }}>
-                            DogeCodes React Chat
+                            Gleb React Chat
                         </Typography>
                     </Toolbar>
                 </AppBar>
@@ -58,12 +84,23 @@ class AuthPageComponent extends React.Component {
                             <AppBar position="static" color="default">
                                 <Tabs value={activeTab} onChange={this.handleTabChange} fullWidth>
                                     <Tab label="Login" />
-                                    <Tab label="Sign Up" />
+                                    <Tab label="Register" />
                                 </Tabs>
                             </AppBar>
                             <div className={classes.tabContent}>
-                                {/*{activeTab === 0 && <LoginForm onSubmit={login} />}*/}
-                                {/*{activeTab === 1 && <RegisterForm onSubmit={register} />}*/}
+                                {activeTab === 0 &&
+                                <AuthForm
+                                    onSubmit={login}
+                                    onChange={this.onInputChange}
+                                    {...this.state.form}
+                                />}
+                                {activeTab === 1 &&
+                                <AuthForm
+                                    onSubmit={register}
+                                    onChange={this.onInputChange}
+                                    {...this.state.form}
+                                    isRegisterForm={true}
+                                />}
                             </div>
                         </Paper>
                     </Grid>
