@@ -1,12 +1,13 @@
 import React from 'react'
-import { BrowserRouter, Route } from "react-router-dom";
+import { Router, Route } from "react-router-dom";
 import { AuthScreen, ChatScreen } from '@src/screens';
+import history from '@src/utils/history'
 
-export const Router = () => (
-    <BrowserRouter>
+export default () => (
+    <Router history={history}>
         <div>
             <Route path="/auth" exact component={AuthScreen} />
             <Route path="/chat/:chatId?" component={ChatScreen} />
         </div>
-    </BrowserRouter>
+    </Router>
 )

@@ -10,10 +10,8 @@ export const login = (state = initialState, action) => {
             return {...state, pending: true, success: false}
         case 'LOGIN_SUCCESS':
             return {...state, pending: false, success: true}
-        case 'REGISTER_FAILED':
-            return {...state, pending: false, registerSuccess: false}
-        case 'USER_ALREADY_EXISTS':
-            return {...state, pending: false, userAlreadyExists: true}
+        case 'LOGIN_FAILED':
+            return {...state, pending: false, success: false}
         default:
             return state
     }

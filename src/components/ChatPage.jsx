@@ -31,7 +31,7 @@ const styles = theme => ({
     }
 });
 
-const Chat = (props) => {
+const ChatPageComponent = (props) => {
     const { classes } = props;
     return (
         <div className={classes.root}>
@@ -46,4 +46,4 @@ const Chat = (props) => {
     );
 }
 
-export const ChatScreen = withStyles(styles)(Chat);
+export const ChatPage = withStyles(styles)(ChatPageComponent);

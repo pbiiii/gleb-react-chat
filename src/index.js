@@ -2,10 +2,11 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import * as serviceWorker from './serviceWorker';
-import { Router } from '@src/Router';
+import Router from '@src/Router';
 import { Provider } from 'react-redux'
-import store from './store'
+import configureStore from './store'
 
+const store = configureStore();
 const rootEl = document.getElementById('root')
 
 const render = (Component) => {
@@ -16,6 +17,12 @@ const render = (Component) => {
         rootEl,
     );
 };
+
+if (module.hot) {
+    module.hot.accept('@src/Router', () => {
+        render(Router);
+    });
+}
 
 render(Router);
 
