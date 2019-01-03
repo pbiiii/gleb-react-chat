@@ -1,13 +1,13 @@
 import React from 'react'
-import { Router, Route } from "react-router-dom";
-import { AuthScreen, ChatScreen } from '@src/screens';
+import { Router, Route, Switch } from "react-router-dom";
+import { AuthScreen, ChatScreen, PrivateRoute } from '@src/containers';
 import history from '@src/utils/history'
 
 export default () => (
     <Router history={history}>
-        <div>
+        <Switch>
             <Route path="/auth" exact component={AuthScreen} />
-            <Route path="/chat/:chatId?" component={ChatScreen} />
-        </div>
+            <PrivateRoute path="/chat/:chatId?" component={ChatScreen} />
+        </Switch>
     </Router>
 )

@@ -59,9 +59,27 @@ class AuthPageComponent extends React.Component {
         }))
     }
 
+    handleRegisterSubmit = (event) => {
+        event.preventDefault();
+        const { username, password } = this.state.form
+        this.props.register({
+            username: username.value,
+            password: password.value
+        });
+    }
+
+    handleLoginSubmit = (event) => {
+        event.preventDefault();
+        const { username, password } = this.state.form
+        this.props.login({
+            username: username.value,
+            password: password.value
+        });
+    }
+
     render() {
         const {
-            classes, register, login, isAuthenticated, error,
+            classes, isAuthenticated, error,
         } = this.props;
 
         const { activeTab } = this.state;
@@ -91,13 +109,13 @@ class AuthPageComponent extends React.Component {
                             <div className={classes.tabContent}>
                                 {activeTab === 0 &&
                                 <AuthForm
-                                    onSubmit={login}
+                                    onSubmit={this.handleLoginSubmit}
                                     onChange={this.onInputChange}
                                     {...this.state.form}
                                 />}
                                 {activeTab === 1 &&
                                 <AuthForm
-                                    onSubmit={register}
+                                    onSubmit={this.handleRegisterSubmit}
                                     onChange={this.onInputChange}
                                     {...this.state.form}
                                     isRegisterForm={true}

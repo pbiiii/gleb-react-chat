@@ -47,7 +47,7 @@ export const AuthForm = ({username, password, repeatedPassword, onChange, onSubm
         }
         <Button
             fullWidth
-            variant="raised"
+            variant="contained"
             type="submit"
             color="primary"
         >

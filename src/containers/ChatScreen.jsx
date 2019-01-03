@@ -1,7 +1,7 @@
 import React from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import { AuthPage } from "@src/components";
+import { ChatPage } from "@src/components/index";
 
 const mapStateToProps = state => ({
 
@@ -13,4 +13,4 @@ const mapDispatchToProps = dispatch =>
         dispatch,
     );
 
-export const AuthScreen = connect(mapStateToProps, mapDispatchToProps)(AuthPage);
+export const ChatScreen = connect(mapStateToProps, mapDispatchToProps)(ChatPage);
