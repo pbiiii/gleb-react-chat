@@ -31,19 +31,40 @@ const styles = theme => ({
     }
 });
 
-const ChatPageComponent = (props) => {
-    const { classes } = props;
-    return (
-        <div className={classes.root}>
-            <CssBaseline />
-            <AppTopBar />
-            <ChatDrawer/>
-            <main className={classes.content}>
-                <ChatMessageList />
-                <ChatMessageInput />
-            </main>
-        </div>
-    );
+class ChatPageComponent extends React.Component {
+
+    componentDidMount() {
+        const { fetchAllChats, fetchMyChats  } = this.props
+        Promise.all([
+            fetchAllChats(),
+            fetchMyChats(),
+        ])
+    }
+
+    render() {
+        const {
+            classes,
+            logout,
+            allChats,
+            myChats,
+        } = this.props;
+        return (
+            <div className={classes.root}>
+                <CssBaseline />
+                <AppTopBar
+                    logout={logout}
+                />
+                <ChatDrawer
+                    allChats={allChats}
+                    myChats={myChats}
+                />
+                <main className={classes.content}>
+                    <ChatMessageList />
+                    <ChatMessageInput />
+                </main>
+            </div>
+        );
+    }
 }
 
 export const ChatPage = withStyles(styles)(ChatPageComponent);

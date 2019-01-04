@@ -8,13 +8,23 @@ const styles = theme => ({
 
 });
 
-const DrawerBottomNavigationComponent = ({classes}) => {
+const DrawerBottomNavigationComponent = ({activeTab, onTabChange}) => {
     return (
         <BottomNavigation
             showLabels
+            value={activeTab}
+            onChange={onTabChange}
         >
-            <BottomNavigationAction label="My Chats" icon={<RestoreIcon />} />
-            <BottomNavigationAction label="Explore" icon={<ExploreIcon />} />
+            <BottomNavigationAction
+                label="My Chats"
+                icon={<RestoreIcon />}
+                value="my"
+            />
+            <BottomNavigationAction
+                label="Explore"
+                icon={<ExploreIcon />}
+                value="all"
+            />
         </BottomNavigation>
     );
 }

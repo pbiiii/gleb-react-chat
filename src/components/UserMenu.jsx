@@ -49,6 +49,7 @@ class UserMenuComponent extends React.Component {
     }
 
     handleLogout = () => {
+        this.props.onLogoutClick()
         this.closeMenu()
     }
 

@@ -23,7 +23,7 @@ const ChatsItemComponent = ({classes, chat, active}) => {
             selected={active}
             className={active && classes.activeChat}
         >
-            <Avatar colorFrom={chatId}>{avatarTitle}</Avatar>
+            <Avatar>{avatarTitle}</Avatar>
             <ListItemText primary={title}/>
         </ListItem>
     );

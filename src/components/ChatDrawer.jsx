@@ -30,35 +30,40 @@ const styles = theme => ({
     },
 });
 
-const ChatDrawerComponent = ({classes}) => {
-    return (
-        <Drawer
-            className={classes.drawer}
-            variant="permanent"
-            classes={{
-                paper: classes.drawerPaper,
-            }}
-            anchor="left"
-        >
-            <DrawerSearchInput />
-            <Divider/>
-            <ChatsList
-                chats={[
-                    {
-                        id: 1,
-                        title: 'Test chat',
-                        createdAt: '2018-12-22 12:00'
-                    },{
-                        id: 2,
-                        title: 'Test chat 2',
-                        createdAt: '2018-12-22 12:00'
-                    },
-                ]}
-            />
-            <AddChat />
-            <DrawerBottomNavigation/>
-        </Drawer>
-    );
+class ChatDrawerComponent extends React.Component {
+
+    state = {
+        activeTab: 'my'
+    }
+
+    onTabChange = (event, tabIndex) => {
+        this.setState({ ...this.state, activeTab: tabIndex })
+    }
+
+    render() {
+        const {classes, allChats, myChats} = this.props
+        return (
+            <Drawer
+                className={classes.drawer}
+                variant="permanent"
+                classes={{
+                    paper: classes.drawerPaper,
+                }}
+                anchor="left"
+            >
+                <DrawerSearchInput/>
+                <Divider/>
+                <ChatsList
+                    chats={this.state.activeTab === 'my' ? myChats : allChats}
+                />
+                <AddChat/>
+                <DrawerBottomNavigation
+                    activeTab={this.state.activeTab}
+                    onTabChange={this.onTabChange}
+                />
+            </Drawer>
+        );
+    }
 }
 
 export const ChatDrawer = withStyles(styles)(ChatDrawerComponent);

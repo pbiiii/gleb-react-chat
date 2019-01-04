@@ -50,7 +50,7 @@ class ChatMenuComponent extends React.Component {
         const { anchorEl } = this.state;
         const chatTitle = activeChat.title.substring(0, 2).toUpperCase()
         return (
-            <Typography variant="body1" className={classes.chatMenuContainer}>
+            <div className={classes.chatMenuContainer}>
                 <Avatar>{chatTitle}</Avatar>
                 <Typography variant="title" className={classes.chatMenuTitle}>
                     {activeChat.title}
@@ -76,7 +76,7 @@ class ChatMenuComponent extends React.Component {
                         Leave chat
                     </MenuItem>
                 </Menu>
-            </Typography>
+            </div>
         );
     }
 }

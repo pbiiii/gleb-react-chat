@@ -7,9 +7,8 @@ export const register = ({username, password}) => {
             type: types.REGISTER_REQUESTED
         });
         client.post('/signup', {username, password})
-            .then(({data, status}) => {
+            .then(({data}) => {
                 const { success, message } = data;
-                console.log(data, status, success)
                 if(success) {
                     dispatch({
                         type: types.REGISTER_SUCCESS,
@@ -36,9 +35,8 @@ export const login = ({username, password}) => {
             type: types.LOGIN_REQUESTED
         });
         client.post('/login', {username, password})
-            .then(({data, status}) => {
+            .then(({data}) => {
                 const { success, message } = data;
-                console.log(data, status, success)
                 if(success) {
                     dispatch({
                         type: types.LOGIN_SUCCESS,
@@ -48,6 +46,21 @@ export const login = ({username, password}) => {
                     console.dir(message)
                 }
             })
+            .catch((error) => {
+                console.dir(error)
+            })
+    }
+}
+
+export const logout = () => {
+    return (dispatch) => {
+        dispatch({
+            type: types.LOGOUT_REQUESTED
+        });
+        client.get('/logout')
+            .then(() => dispatch({
+                type: types.LOGOUT_SUCCESS
+            }))
             .catch((error) => {
                 console.dir(error)
             })

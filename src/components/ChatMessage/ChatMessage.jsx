@@ -15,7 +15,7 @@ export const ChatMessage = ({sender, activeUser, id, content, createdAt}) => {
         >
             <Avatar>{avatarTitle}</Avatar>
             <Paper
-                button
+                button="true"
                 className={'message'}
             >
                 <Typography

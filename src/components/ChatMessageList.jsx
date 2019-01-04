@@ -33,9 +33,9 @@ class ChatMessageListComponent extends React.Component {
             >
                 {
                     messages.length
-                        ? messages.map(message =>
+                        ? messages.map((message, index) =>
                             <ChatMessage
-                                key={message.id}
+                                key={message.id || index}
                                 activeUser={activeUser}
                                 {...message}
                             />

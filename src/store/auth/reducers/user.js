@@ -17,7 +17,7 @@ export const user = (state = initialState, action) => {
                 info: action.payload.user,
                 isAuthenticated: true,
             }
-        case 'LOGOUT':
+        case 'LOGOUT_SUCCESS':
             localStorage.removeItem('token')
             return {
             ...state,
