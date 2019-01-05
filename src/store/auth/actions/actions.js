@@ -74,16 +74,46 @@ export const getUser = () => {
         });
         client.get('/users/me')
             .then(({data}) => {
+                const { user } = data
                 dispatch({
                     type: types.GET_USER_SUCCESS,
-                    payload: data
+                    payload: { user }
                 });
             })
             .catch((error) => {
                 dispatch({
                     type: types.GET_USER_FAILED,
+                    payload: error
                 });
             })
+
+    };
+}
+
+export const editUser = ({username, firstName, lastName, city}) => {
+    return (dispatch) => {
+        dispatch({
+            type: types.EDIT_USER_REQUESTED,
+            payload: {username, firstName, lastName, city}
+        });
+        client.post('/users/me', {
+            data: {
+                username,
+                firstName,
+                lastName,
+                city
+            }
+        }).then(({data}) => {
+            dispatch({
+                type: types.EDIT_USER_SUCCESS,
+                payload: data
+            });
+        }).catch((error) => {
+            dispatch({
+                type: types.EDIT_USER_FAILED,
+                payload: error
+            });
+        })
 
     };
 }

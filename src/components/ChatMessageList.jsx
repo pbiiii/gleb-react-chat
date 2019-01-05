@@ -1,9 +1,8 @@
 import React from 'react';
 import {withStyles} from '@material-ui/core/styles';
+import classNames from 'classnames'
 import { ChatMessage } from "./ChatMessage/ChatMessage";
 import Typography from "@material-ui/core/Typography";
-import mocks from '@src/mocks'
-
 
 const styles = theme => ({
     messagesWrapper: {
@@ -13,38 +12,38 @@ const styles = theme => ({
         overflowY: 'scroll',
         paddingBottom: theme.spacing.unit * 14
     },
+    noMessages: {
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
+    }
 });
 
 class ChatMessageListComponent extends React.Component {
     render() {
-        const activeUser = {
-            id: 1,
-            name: 'user1'
-        }
-        const { messages } = mocks
         const {
             classes,
-            // messages,
-            // activeUser
+            messages,
+            activeUser
         } = this.props
+        const messagesExists = messages && messages.length > 0
         return (
             <div
-                className={classes.messagesWrapper}
+                className={classNames(classes.messagesWrapper, !messagesExists && classes.noMessages)}
             >
                 {
-                    messages.length
-                        ? messages.map((message, index) =>
+                    messagesExists ? (
+                        messages.map((message, index) =>
                             <ChatMessage
-                                key={message.id || index}
+                                key={message._id || index}
                                 activeUser={activeUser}
                                 {...message}
-                            />
-                        )
-                        : <Typography
-                            variant={'h3'}
-                        >
+                            />)
+                    ) : (
+                        <Typography variant={'h5'}>
                             There is no messages yet
                         </Typography>
+                    )
                 }
             </div>
         )

@@ -16,11 +16,22 @@ class UserMenuComponent extends React.Component {
         anchorEl: null,
         modalIsOpen: false,
         editProfileForm: {
-            userName: '',
+            username: '',
             firstName: '',
             lastName: '',
         }
     };
+
+    componentWillReceiveProps(nextProps) {
+        this.setState({
+            ...this.state,
+            editProfileForm: {
+                username: nextProps.activeUser.username,
+                firstName: nextProps.activeUser.firstName,
+                lastName: nextProps.activeUser.lastName,
+            }
+        });
+    }
 
     openMenu = event => {
         this.setState({ anchorEl: event.currentTarget });
@@ -37,6 +48,7 @@ class UserMenuComponent extends React.Component {
 
     onInputChange = (event) => {
         this.setState({
+            ...this.state,
             editProfileForm: {
                 ...this.state.editProfileForm,
                 [event.target.name]: event.target.value,
@@ -45,11 +57,12 @@ class UserMenuComponent extends React.Component {
     }
 
     updateProfile = () => {
+        this.props.editUser({...this.state.editProfileForm})
         this.handleToggleModal()
     }
 
     handleLogout = () => {
-        this.props.onLogoutClick()
+        this.props.logout()
         this.closeMenu()
     }
 

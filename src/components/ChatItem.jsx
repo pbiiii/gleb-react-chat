@@ -3,6 +3,8 @@ import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
 import Avatar from "@material-ui/core/Avatar";
 import {withStyles} from "@material-ui/core/styles/index";
+import { Link } from 'react-router-dom';
+import moment from 'moment';
 
 const styles = theme => ({
     activeChat: {
@@ -10,9 +12,9 @@ const styles = theme => ({
     }
 });
 
-const ChatsItemComponent = ({classes, chat, active}) => {
+const ChatItemComponent = ({classes, chat, active}) => {
     const {
-        id: chatId,
+        _id: chatId,
         title,
         createdAt
     } = chat
@@ -20,13 +22,15 @@ const ChatsItemComponent = ({classes, chat, active}) => {
     return (
         <ListItem
             button
+            component={Link}
+            to={`/chat/${chatId}`}
             selected={active}
             className={active && classes.activeChat}
         >
             <Avatar>{avatarTitle}</Avatar>
-            <ListItemText primary={title}/>
+            <ListItemText primary={title} secondary={moment(createdAt).fromNow()}/>
         </ListItem>
     );
 }
 
-export const ChatItem = withStyles(styles)(ChatsItemComponent);
+export const ChatItem = withStyles(styles)(ChatItemComponent);

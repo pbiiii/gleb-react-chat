@@ -23,11 +23,6 @@ class ChatMenuComponent extends React.Component {
     state = {
         anchorEl: null,
         modalIsOpen: false,
-        editProfileForm: {
-            userName: '',
-            firstName: '',
-            lastName: '',
-        }
     };
 
     openMenu = event => {
@@ -41,14 +36,18 @@ class ChatMenuComponent extends React.Component {
     render() {
         const {
             // disabled = false,
-            activeUser,
-            onLeaveClick,
+            leaveChat,
+            deleteChat,
             activeChat,
+            activeUser,
             classes,
         } = this.props
         const disabled = false
         const { anchorEl } = this.state;
         const chatTitle = activeChat.title.substring(0, 2).toUpperCase()
+        if(!activeUser.isChatMember) {
+            return null
+        }
         return (
             <div className={classes.chatMenuContainer}>
                 <Avatar>{chatTitle}</Avatar>
@@ -70,11 +69,8 @@ class ChatMenuComponent extends React.Component {
                     open={Boolean(anchorEl)}
                     onClose={this.closeMenu}
                 >
-                    <MenuItem
-                        onClick={onLeaveClick}
-                    >
-                        Leave chat
-                    </MenuItem>
+                    {activeUser.isMember && <MenuItem onClick={leaveChat}>Leave chat</MenuItem>}
+                    {activeUser.isCreator && <MenuItem onClick={deleteChat}>Delete chat</MenuItem>}
                 </Menu>
             </div>
         );

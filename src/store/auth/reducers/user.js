@@ -1,3 +1,5 @@
+import * as types from '../actions/actionTypes'
+
 const token = localStorage.getItem('token');
 
 const initialState = {
@@ -8,8 +10,8 @@ const initialState = {
 
 export const user = (state = initialState, action) => {
     switch (action.type) {
-        case 'REGISTER_SUCCESS':
-        case 'LOGIN_SUCCESS':
+        case types.REGISTER_SUCCESS:
+        case types.LOGIN_SUCCESS:
             const { user, token } = action.payload
             localStorage.setItem('token', token)
             return {
@@ -17,6 +19,11 @@ export const user = (state = initialState, action) => {
                 token,
                 info: user,
                 isAuthenticated: true,
+            }
+        case types.GET_USER_SUCCESS:
+            return {
+                ...state,
+                info: action.payload.user
             }
         case 'LOGOUT_SUCCESS':
             localStorage.removeItem('token')

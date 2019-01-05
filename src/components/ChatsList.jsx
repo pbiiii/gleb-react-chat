@@ -20,20 +20,21 @@ const ChatsListComponent = ({chats, classes, activeChat}) => {
         <List
             className={classes.list}
         >
-            {chats.length > 0 ? chats.map(chat => (
+            {chats && chats.length > 0 ?(
+                chats.map(chat => (
                 <ChatItem
                     chat={chat}
                     key={chat._id}
-                    active={activeChat && (activeChat.id === chat.id)}
+                    active={activeChat && (activeChat._id === chat._id)}
                 />
-            )) :
+            ))) : (
                 <Typography
                     variant="body1"
                     className={classes.subtitle}
                 >
                     There is no chats yet...
                 </Typography>
-            }
+            )}
         </List>
     );
 }

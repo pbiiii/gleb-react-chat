@@ -1,12 +1,14 @@
 import React from 'react';
 import { withStyles } from '@material-ui/core/styles';
 import CssBaseline from '@material-ui/core/CssBaseline';
+import classNames from 'classnames'
 import {
     ChatDrawer,
     AppTopBar,
     ChatMessageList,
     ChatMessageInput
 } from '@src/components'
+import {Typography} from '@material-ui/core/es/index';
 
 const styles = theme => ({
     root: {
@@ -28,40 +30,83 @@ const styles = theme => ({
         width: '100%',
         overflow: 'hidden',
         position: 'relative',
+    },
+    noActiveChat: {
+        alignItems: 'center'
     }
 });
 
 class ChatPageComponent extends React.Component {
 
     componentDidMount() {
-        const { fetchAllChats, fetchMyChats  } = this.props
+        const {
+            fetchAllChats,
+            fetchMyChats,
+            match,
+            setActiveChat,
+        } = this.props
         Promise.all([
             fetchAllChats(),
             fetchMyChats(),
-        ])
+        ]).then(() => {
+            const { chatId } = match.params
+            if (chatId) {
+                setActiveChat(chatId);
+            }
+        })
     }
 
     render() {
         const {
             classes,
             logout,
+            activeUser,
+            editUser,
+            isAuthenticated,
             chats,
             createChat,
+            deleteChat,
+            leaveChat,
+            joinChat,
+            messages,
+            sendMessage,
         } = this.props;
+        const activeChat = chats.active
         return (
             <div className={classes.root}>
                 <CssBaseline />
                 <AppTopBar
                     logout={logout}
+                    activeUser={activeUser}
+                    editUser={editUser}
+                    activeChat={activeChat}
+                    leaveChat={leaveChat}
+                    deleteChat={deleteChat}
                 />
                 <ChatDrawer
                     allChats={chats.all}
                     myChats={chats.my}
                     onCreateChat={createChat}
                 />
-                <main className={classes.content}>
-                    <ChatMessageList />
-                    <ChatMessageInput />
+                <main className={classNames(classes.content, activeChat && classes.noActiveChat)}>
+                    {activeChat && (
+                        <React.Fragment>
+                            <ChatMessageList
+                                messages={messages}
+                                activeUser={activeUser}
+                            />
+                            <ChatMessageInput
+                                sendMessage={(content) => sendMessage(chats.active._id, content)}
+                                joinChat={joinChat}
+                                activeUser={activeUser}
+                            />
+                        </React.Fragment>
+                    )}
+                    {!activeChat && (
+                        <Typography variant={'h5'}>
+                            Please select or create chat
+                        </Typography>
+                    )}
                 </main>
             </div>
         );

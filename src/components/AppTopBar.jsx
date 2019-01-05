@@ -19,42 +19,46 @@ const styles = theme => ({
     },
 });
 
-const AppBarComponent = (
-    {
-        classes,
-        activeChat = {title: 'Active chat'},
-        isConnected,
-        activeUser,
-        leaveChat,
-        deleteChat,
-        logout,
-        editUser
-    }
-) => {
-    return (
-        <AppBar position="fixed" className={classes.appBar}>
-            <Toolbar className={classes.appBarTitle}>
-                {activeChat ? (
-                    <ChatMenu
+class AppTopBarComponent extends React.Component {
+
+    render() {
+        const {
+            classes,
+            activeChat,
+            isConnected,
+            activeUser,
+            leaveChat,
+            deleteChat,
+            logout,
+            editUser
+        } = this.props
+
+        return (
+            <AppBar position="fixed" className={classes.appBar}>
+                <Toolbar className={classes.appBarTitle}>
+                    {activeChat ? (
+                        <ChatMenu
+                            disabled={!isConnected}
+                            activeUser={activeUser}
+                            deleteChat={() => deleteChat({chat: activeChat})}
+                            leaveChat={() => leaveChat({chat: activeChat})}
+                            activeChat={activeChat}
+                        />
+                    ) : (
+                        <Typography variant="title" style={{color: '#fff'}}>
+                            Gleb React Chat
+                        </Typography>
+                    )}
+                    <UserMenu
                         disabled={!isConnected}
                         activeUser={activeUser}
-                        onLeaveClick={() => leaveChat(activeChat._id)}
-                        activeChat={activeChat}
+                        logout={logout}
+                        editUser={editUser}
                     />
-                ) : (
-                    <Typography variant="title" >
-                        Gleb React Chat
-                    </Typography>
-                )}
-                <UserMenu
-                    disabled={!isConnected}
-                    activeUser={activeUser}
-                    onLogoutClick={logout}
-                    onEditProfileClick={editUser}
-                />
-            </Toolbar>
-        </AppBar>
-    );
+                </Toolbar>
+            </AppBar>
+        )
+    }
 }
 
-export const AppTopBar = withStyles(styles)(AppBarComponent);
+export const AppTopBar = withStyles(styles)(AppTopBarComponent);

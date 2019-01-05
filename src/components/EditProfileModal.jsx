@@ -16,7 +16,7 @@ const EditProfileMenuComponent = ({classes, isOpen, onClose, onUpdateProfile, on
     const {
         firstName,
         lastName,
-        userName
+        username
     } = form
     return (
         <Dialog
@@ -29,11 +29,13 @@ const EditProfileMenuComponent = ({classes, isOpen, onClose, onUpdateProfile, on
                 <TextField
                     autoFocus
                     margin="dense"
-                    id="userName"
+                    id="username"
                     label="User name"
                     type="text"
                     fullWidth
-                    value={userName}
+                    value={username}
+                    name="username"
+                    onChange={onInputChange}
                 />
                 <TextField
                     margin="dense"
@@ -42,6 +44,8 @@ const EditProfileMenuComponent = ({classes, isOpen, onClose, onUpdateProfile, on
                     type="test"
                     fullWidth
                     value={firstName}
+                    name="firstName"
+                    onChange={onInputChange}
                 />
                 <TextField
                     margin="dense"
@@ -50,6 +54,8 @@ const EditProfileMenuComponent = ({classes, isOpen, onClose, onUpdateProfile, on
                     type="text"
                     fullWidth
                     value={lastName}
+                    name="lastName"
+                    onChange={onInputChange}
                 />
             </DialogContent>
             <DialogActions>

@@ -28,32 +28,31 @@ const styles = theme => ({
 class ChatMessageInputComponent extends React.Component {
 
     state = {
-        message: '',
+        content: '',
     }
 
     onMessageChange = (event) => {
         this.setState({
-            message: event.target.value
+            content: event.target.value
         })
     }
 
     onKeyPress = (event) => {
-        const { value } = this.state;
-
-        if (event.key === 'Enter' && value) {
-            this.props.sendMessage(value);
-            this.setState({ value: '' });
+        const { content } = this.state;
+        if (event.key === 'Enter' && content) {
+            this.props.sendMessage(content);
+            this.setState({ content: '' });
         }
     };
 
     render() {
         const {
             classes,
-            // showJoinButton,
-            onJoinButtonClick,
+            activeUser,
+            joinChat,
             disabled,
         } = this.props
-        const showJoinButton = false
+        const showJoinButton = !activeUser.isChatMember
         return (
             <div
                 className={classes.wrapper}
@@ -61,13 +60,12 @@ class ChatMessageInputComponent extends React.Component {
                 <Paper className={classes.inputWrapper}>
                     {
                         showJoinButton ? (
-
                             <Button
                                 fullWidth
-                                variant="raised"
+                                variant="contained"
                                 color="primary"
                                 disabled={disabled}
-                                onClick={onJoinButtonClick}
+                                onClick={joinChat}
                                 className={classes.button}
                             >
                                 Join
