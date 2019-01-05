@@ -10,11 +10,12 @@ export const user = (state = initialState, action) => {
     switch (action.type) {
         case 'REGISTER_SUCCESS':
         case 'LOGIN_SUCCESS':
-            localStorage.setItem('token', action.payload.token)
+            const { user, token } = action.payload
+            localStorage.setItem('token', token)
             return {
                 ...state,
-                token: action.payload.token,
-                info: action.payload.user,
+                token,
+                info: user,
                 isAuthenticated: true,
             }
         case 'LOGOUT_SUCCESS':

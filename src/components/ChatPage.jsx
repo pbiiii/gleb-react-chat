@@ -45,8 +45,8 @@ class ChatPageComponent extends React.Component {
         const {
             classes,
             logout,
-            allChats,
-            myChats,
+            chats,
+            createChat,
         } = this.props;
         return (
             <div className={classes.root}>
@@ -55,8 +55,9 @@ class ChatPageComponent extends React.Component {
                     logout={logout}
                 />
                 <ChatDrawer
-                    allChats={allChats}
-                    myChats={myChats}
+                    allChats={chats.all}
+                    myChats={chats.my}
+                    onCreateChat={createChat}
                 />
                 <main className={classes.content}>
                     <ChatMessageList />

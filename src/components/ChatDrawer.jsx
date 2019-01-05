@@ -41,7 +41,12 @@ class ChatDrawerComponent extends React.Component {
     }
 
     render() {
-        const {classes, allChats, myChats} = this.props
+        const {
+            classes,
+            allChats,
+            myChats,
+            onCreateChat,
+        } = this.props
         return (
             <Drawer
                 className={classes.drawer}
@@ -56,7 +61,9 @@ class ChatDrawerComponent extends React.Component {
                 <ChatsList
                     chats={this.state.activeTab === 'my' ? myChats : allChats}
                 />
-                <AddChat/>
+                <AddChat
+                    onCreateChat={onCreateChat}
+                />
                 <DrawerBottomNavigation
                     activeTab={this.state.activeTab}
                     onTabChange={this.onTabChange}

@@ -23,7 +23,7 @@ const ChatsListComponent = ({chats, classes, activeChat}) => {
             {chats.length > 0 ? chats.map(chat => (
                 <ChatItem
                     chat={chat}
-                    key={chat.id}
+                    key={chat._id}
                     active={activeChat && (activeChat.id === chat.id)}
                 />
             )) :
