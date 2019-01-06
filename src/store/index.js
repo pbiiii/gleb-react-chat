@@ -16,7 +16,10 @@ export default function configureStore() {
 
     const store = createStore(
         rootReducer,
-        composeEnhancers(applyMiddleware(thunkMiddleware, loggerMiddleware)),
+        composeEnhancers(applyMiddleware(
+            thunkMiddleware,
+            loggerMiddleware
+        )),
     );
 
     if (module.hot) {

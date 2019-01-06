@@ -63,7 +63,6 @@ export const fetchChat = (chatId) => {
 
 export const setActiveChat = (chatId) => {
     return dispatch => dispatch(fetchChat(chatId)).then(({chat}) => {
-        console.log(chat)
         if (!chat) {
             dispatch(redirect('/chat'));
             return dispatch({
@@ -100,13 +99,13 @@ export const createChat = (title) => {
     }
 }
 
-export const joinChat = (chat) => {
+export const joinChat = ({chat}) => {
     return (dispatch) => {
         dispatch({
             type: types.JOIN_CHAT_REQUESTED,
             payload: chat
         });
-        client.post(`/chats/${chat._id}/join`)
+        client.get(`/chats/${chat._id}/join`)
             .then(({data}) => {
                 const { chat } = data
                 dispatch({
@@ -137,7 +136,7 @@ export const sendMessage = ({chat, content}) => {
             const { message } = data
             dispatch({
                 type: types.SEND_MESSAGE_SUCCESS,
-                payload: { message: content }
+                payload: { message }
             })
         }).catch((error) => dispatch({
             type: types.SEND_MESSAGE_FAILED,
@@ -157,6 +156,7 @@ export const leaveChat = ({chat}) => {
                 type: types.LEAVE_CHAT_SUCCESS,
                 payload: {chat}
             })
+            dispatch(setActiveChat(null))
         }).catch((error) => dispatch({
             type: types.LEAVE_CHAT_FAILED,
             payload: error

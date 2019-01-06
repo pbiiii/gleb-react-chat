@@ -1,5 +1,6 @@
 import { combineReducers } from 'redux'
 import * as types from '../actions/actionTypes'
+import * as authTypes from '@src/store/auth/actions/actionTypes'
 
 const initialState = {
     activeChatId: null,
@@ -14,6 +15,7 @@ const activeChatId = (state = initialState.activeChatId, action) => {
         case types.JOIN_CHAT_SUCCESS:
             return getChatId(action.payload.chat);
         case types.UNSET_ACTIVE_CHAT:
+        case authTypes.LOGOUT_SUCCESS:
             return null;
         default:
             return state
@@ -59,6 +61,8 @@ const byIds = (state = initialState.byIds, action) => {
                     [getChatId(chat)]: chat,
                 }), {})
             }
+        case types.JOIN_CHAT_SUCCESS:
+        case types.LEAVE_CHAT_SUCCESS:
         case types.CREATE_CHAT_SUCCESS:
             const { chat } = action.payload
             return {

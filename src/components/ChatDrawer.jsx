@@ -46,6 +46,7 @@ class ChatDrawerComponent extends React.Component {
             allChats,
             myChats,
             onCreateChat,
+            activeChat,
         } = this.props
         return (
             <Drawer
@@ -59,6 +60,7 @@ class ChatDrawerComponent extends React.Component {
                 <DrawerSearchInput/>
                 <Divider/>
                 <ChatsList
+                    activeChat={activeChat}
                     chats={this.state.activeTab === 'my' ? myChats : allChats}
                 />
                 <AddChat

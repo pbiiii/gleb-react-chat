@@ -45,33 +45,34 @@ class ChatMenuComponent extends React.Component {
         const disabled = false
         const { anchorEl } = this.state;
         const chatTitle = activeChat.title.substring(0, 2).toUpperCase()
-        if(!activeUser.isChatMember) {
-            return null
-        }
         return (
             <div className={classes.chatMenuContainer}>
                 <Avatar>{chatTitle}</Avatar>
                 <Typography variant="title" className={classes.chatMenuTitle}>
                     {activeChat.title}
                 </Typography>
-                <IconButton
-                    color="inherit"
-                    aria-owns={anchorEl ? 'chat-menu' : null}
-                    aria-haspopup="true"
-                    disabled={disabled}
-                    onClick={this.openMenu}
-                >
-                    <MoreVertIcon/>
-                </IconButton>
-                <Menu
-                    id="chat-menu"
-                    anchorEl={anchorEl}
-                    open={Boolean(anchorEl)}
-                    onClose={this.closeMenu}
-                >
-                    {activeUser.isMember && <MenuItem onClick={leaveChat}>Leave chat</MenuItem>}
-                    {activeUser.isCreator && <MenuItem onClick={deleteChat}>Delete chat</MenuItem>}
-                </Menu>
+                {activeUser.isChatMember && (
+                    <React.Fragment>
+                        <IconButton
+                            color="inherit"
+                            aria-owns={anchorEl ? 'chat-menu' : null}
+                            aria-haspopup="true"
+                            disabled={disabled}
+                            onClick={this.openMenu}
+                        >
+                            <MoreVertIcon/>
+                        </IconButton>
+                        <Menu
+                            id="chat-menu"
+                            anchorEl={anchorEl}
+                            open={Boolean(anchorEl)}
+                            onClose={this.closeMenu}
+                        >
+                            {activeUser.isMember && <MenuItem onClick={leaveChat}>Leave chat</MenuItem>}
+                            {activeUser.isCreator && <MenuItem onClick={deleteChat}>Delete chat</MenuItem>}
+                        </Menu>
+                    </React.Fragment>
+                )}
             </div>
         );
     }

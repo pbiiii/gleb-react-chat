@@ -46,6 +46,7 @@ class ChatMessageInputComponent extends React.Component {
     };
 
     render() {
+        const { content } = this.state
         const {
             classes,
             activeUser,
@@ -75,7 +76,7 @@ class ChatMessageInputComponent extends React.Component {
                                 fullWidth
                                 placeholder="Type your message…"
                                 disabled={disabled}
-                                value={this.state.value}
+                                value={content}
                                 onChange={this.onMessageChange}
                                 onKeyPress={this.onKeyPress}
                                 className={classes.input}

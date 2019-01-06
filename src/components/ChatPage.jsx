@@ -56,13 +56,21 @@ class ChatPageComponent extends React.Component {
         })
     }
 
+    componentWillReceiveProps(nextProps) {
+        const { match: { params }, setActiveChat } = this.props;
+        const { params: nextParams } = nextProps.match;
+
+        if (nextParams.chatId && (params.chatId !== nextParams.chatId)) {
+            setActiveChat(nextParams.chatId);
+        }
+    }
+
     render() {
         const {
             classes,
             logout,
             activeUser,
             editUser,
-            isAuthenticated,
             chats,
             createChat,
             deleteChat,
@@ -86,9 +94,12 @@ class ChatPageComponent extends React.Component {
                 <ChatDrawer
                     allChats={chats.all}
                     myChats={chats.my}
+                    activeChat={activeChat}
                     onCreateChat={createChat}
                 />
-                <main className={classNames(classes.content, activeChat && classes.noActiveChat)}>
+                <main
+                    className={classNames(classes.content, !activeChat && classes.noActiveChat)}
+                >
                     {activeChat && (
                         <React.Fragment>
                             <ChatMessageList
@@ -96,8 +107,8 @@ class ChatPageComponent extends React.Component {
                                 activeUser={activeUser}
                             />
                             <ChatMessageInput
-                                sendMessage={(content) => sendMessage(chats.active._id, content)}
-                                joinChat={joinChat}
+                                sendMessage={(content) => sendMessage({chat: activeChat, content})}
+                                joinChat={() => joinChat({chat: activeChat})}
                                 activeUser={activeUser}
                             />
                         </React.Fragment>
