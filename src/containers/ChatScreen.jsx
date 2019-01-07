@@ -2,6 +2,7 @@ import React from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { ChatPage } from "@src/components/index";
+import { mountChat, unMountChat, sendMessage, socketsConnect } from '@src/store/sockets/actions'
 import {
     fetchAllChats,
     fetchMyChats,
@@ -10,7 +11,6 @@ import {
     deleteChat,
     joinChat,
     leaveChat,
-    sendMessage,
 } from "@src/store/chats/actions";
 import { logout, editUser } from "@src/store/auth/actions";
 import * as fromChats from '@src/store/chats/reducers/chats'
@@ -37,14 +37,17 @@ const mapStateToProps = state => {
 };
 
 const mapDispatchToProps = dispatch => bindActionCreators({
+    socketsConnect,
     fetchAllChats,
     fetchMyChats,
     setActiveChat,
+    mountChat,
+    unMountChat,
     createChat,
     joinChat,
-    sendMessage,
     deleteChat,
     leaveChat,
+    sendMessage,
     logout,
     editUser,
 }, dispatch);

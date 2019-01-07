@@ -25,7 +25,6 @@ const ChatItemComponent = ({classes, chat, active}) => {
             component={Link}
             to={`/chat/${chatId}`}
             selected={active}
-            className={active && classes.activeChat}
         >
             <Avatar>{avatarTitle}</Avatar>
             <ListItemText primary={title} secondary={moment(createdAt).fromNow()}/>

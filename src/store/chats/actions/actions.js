@@ -122,29 +122,6 @@ export const joinChat = ({chat}) => {
     }
 }
 
-export const sendMessage = ({chat, content}) => {
-    return (dispatch) => {
-        dispatch({
-            type: types.SEND_MESSAGE_REQUESTED,
-            payload: { chat, content }
-        });
-        client.post(`/chats/${chat._id}`, {
-            data: {
-                content
-            }
-        }).then(({ data }) => {
-            const { message } = data
-            dispatch({
-                type: types.SEND_MESSAGE_SUCCESS,
-                payload: { message }
-            })
-        }).catch((error) => dispatch({
-            type: types.SEND_MESSAGE_FAILED,
-            payload: error
-        }))
-    }
-}
-
 export const leaveChat = ({chat}) => {
     return (dispatch) => {
         dispatch({

@@ -9,6 +9,8 @@ import {
     ChatMessageInput
 } from '@src/components'
 import {Typography} from '@material-ui/core/es/index';
+import {mountChat, socketsConnect, unMountChat} from "@src/store/sockets/actions";
+import {createChat} from "@src/store/chats/actions";
 
 const styles = theme => ({
     root: {
@@ -43,31 +45,39 @@ class ChatPageComponent extends React.Component {
             fetchAllChats,
             fetchMyChats,
             match,
+            socketsConnect,
             setActiveChat,
+            mountChat,
         } = this.props
         Promise.all([
             fetchAllChats(),
             fetchMyChats(),
         ]).then(() => {
+            socketsConnect()
+        }).then(() => {
             const { chatId } = match.params
             if (chatId) {
                 setActiveChat(chatId);
+                mountChat(chatId)
             }
         })
     }
 
     componentWillReceiveProps(nextProps) {
-        const { match: { params }, setActiveChat } = this.props;
+        const { match: { params }, setActiveChat, mountChat, unMountChat } = this.props;
         const { params: nextParams } = nextProps.match;
 
         if (nextParams.chatId && (params.chatId !== nextParams.chatId)) {
-            setActiveChat(nextParams.chatId);
+            setActiveChat(nextParams.chatId)
+            unMountChat(params.chatId)
+            mountChat(nextParams.chatId)
         }
     }
 
     render() {
         const {
             classes,
+            unMountChat,
             logout,
             activeUser,
             editUser,
@@ -107,7 +117,7 @@ class ChatPageComponent extends React.Component {
                                 activeUser={activeUser}
                             />
                             <ChatMessageInput
-                                sendMessage={(content) => sendMessage({chat: activeChat, content})}
+                                sendMessage={sendMessage}
                                 joinChat={() => joinChat({chat: activeChat})}
                                 activeUser={activeUser}
                             />

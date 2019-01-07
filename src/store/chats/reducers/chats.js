@@ -1,6 +1,7 @@
 import { combineReducers } from 'redux'
 import * as types from '../actions/actionTypes'
 import * as authTypes from '@src/store/auth/actions/actionTypes'
+import * as socketsTypes from '@src/store/sockets/actions/actionTypes'
 
 const initialState = {
     activeChatId: null,
@@ -17,6 +18,9 @@ const activeChatId = (state = initialState.activeChatId, action) => {
         case types.UNSET_ACTIVE_CHAT:
         case authTypes.LOGOUT_SUCCESS:
             return null;
+        case socketsTypes.RECEIVE_DELETED_CHAT:
+            const { chat: deletedChat } = action.payload
+            return state === getChatId(deletedChat) ? null : state
         default:
             return state
     }
@@ -27,8 +31,10 @@ const allIds = (state = initialState.allIds, action) => {
         case types.FETCH_ALL_CHATS_SUCCESS:
             return action.payload.chats.map(getChatId);
         case types.CREATE_CHAT_SUCCESS:
+        case socketsTypes.RECEIVE_NEW_CHAT:
             return [...state, getChatId(action.payload.chat)]
         case types.DELETE_CHAT_SUCCESS:
+        case socketsTypes.RECEIVE_DELETED_CHAT:
             return state.filter(chatId => chatId !== getChatId(action.payload.chat))
         default:
             return state
@@ -44,6 +50,7 @@ const myIds = (state = initialState.myIds, action) => {
             return [...state, getChatId(action.payload.chat)];
         case types.LEAVE_CHAT_SUCCESS:
         case types.DELETE_CHAT_SUCCESS:
+        case socketsTypes.RECEIVE_DELETED_CHAT:
             return state.filter(chatId => chatId !== getChatId(action.payload.chat))
         default:
             return state
@@ -64,12 +71,14 @@ const byIds = (state = initialState.byIds, action) => {
         case types.JOIN_CHAT_SUCCESS:
         case types.LEAVE_CHAT_SUCCESS:
         case types.CREATE_CHAT_SUCCESS:
+        case socketsTypes.RECEIVE_NEW_CHAT:
             const { chat } = action.payload
             return {
                 ...state,
                 [getChatId(chat)]: chat
             }
         case types.DELETE_CHAT_SUCCESS:
+        case socketsTypes.RECEIVE_DELETED_CHAT:
             const newState = { ...state }
             delete newState[getChatId(action.payload.chat)]
             return newState
