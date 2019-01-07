@@ -13,7 +13,12 @@ export const socketConnectionMissing = () => {
 
 export const socketsConnect = () => {
     return (dispatch, getState) => {
-        const { token } = getState().auth.user
+        const state = getState()
+        const { isFetching } = state.services
+        if(isFetching.sockets) {
+            return Promise.resolve()
+        }
+        const { token } = state.auth.user
         dispatch({
             type: types.SOCKETS_CONNECTION_REQUEST,
 

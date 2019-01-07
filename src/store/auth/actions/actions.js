@@ -2,101 +2,116 @@ import * as types from './actionTypes'
 import { client } from '@src/core/api'
 
 export const register = ({username, password}) => {
-    return (dispatch) => {
+    return (dispatch, getState) => {
+        const { isFetching } = getState().services
+        if(isFetching.register) {
+            return Promise.resolve()
+        }
         dispatch({
             type: types.REGISTER_REQUESTED
         });
-        client.post('/signup', {username, password})
-            .then(({data}) => {
-                const { success, message } = data;
-                if(success) {
+        return client.post('/signup', {username, password}).then(({data}) => {
+            const {success, message} = data;
+            if (success) {
+                dispatch({
+                    type: types.REGISTER_SUCCESS,
+                    payload: false
+                })
+            } else {
+                if (message === 'Username is already taken') {
                     dispatch({
-                        type: types.REGISTER_SUCCESS,
+                        type: types.USER_ALREADY_EXISTS,
                         payload: false
                     })
-                } else {
-                    if(message === 'Username is already taken') {
-                        dispatch({
-                            type: types.USER_ALREADY_EXISTS,
-                            payload: false
-                        })
-                    }
                 }
-            })
-            .catch((error) => {
-                console.dir(error)
-            })
+            }
+        }).catch((error) => {
+            console.dir(error)
+        })
     }
 }
 
 export const login = ({username, password}) => {
-    return (dispatch) => {
+    return (dispatch, getState) => {
+        const { isFetching } = getState().services
+        if(isFetching.login) {
+            return Promise.resolve()
+        }
         dispatch({
             type: types.LOGIN_REQUESTED
         });
-        client.post('/login', {username, password})
-            .then(({data}) => {
-                const { success, message } = data;
-                if(success) {
-                    dispatch({
-                        type: types.LOGIN_SUCCESS,
-                        payload: data
-                    })
-                } else {
-                    console.dir(message)
-                }
-            })
-            .catch((error) => {
-                console.dir(error)
-            })
+        return client.post('/login', {
+            username,
+            password
+        }).then(({data}) => {
+            const {success, message} = data;
+            if (success) {
+                dispatch({
+                    type: types.LOGIN_SUCCESS,
+                    payload: data
+                })
+            } else {
+                console.dir(message)
+            }
+        }).catch((error) => {
+            console.dir(error)
+        })
     }
 }
 
 export const logout = () => {
-    return (dispatch) => {
+    return (dispatch, getState) => {
+        const { isFetching } = getState().services
+        if(isFetching.logout) {
+            return Promise.resolve()
+        }
         dispatch({
             type: types.LOGOUT_REQUESTED
         });
-        client.get('/logout')
-            .then(() => dispatch({
-                type: types.LOGOUT_SUCCESS
-            }))
-            .catch((error) => {
-                console.dir(error)
-            })
+        return client.get('/logout').then(() => dispatch({
+            type: types.LOGOUT_SUCCESS
+        })).catch(error => dispatch({
+            type: types.LOGOUT_FAILED,
+            payload: error
+        }))
     }
 }
 
 export const getUser = () => {
-    return (dispatch) => {
+    return (dispatch, getState) => {
+        const { isFetching } = getState().services
+        if(isFetching.getUser) {
+            return Promise.resolve()
+        }
         dispatch({
             type: types.GET_USER_REQUESTED,
         });
-        client.get('/users/me')
-            .then(({data}) => {
-                const { user } = data
-                dispatch({
-                    type: types.GET_USER_SUCCESS,
-                    payload: { user }
-                });
-            })
-            .catch((error) => {
-                dispatch({
-                    type: types.GET_USER_FAILED,
-                    payload: error
-                });
-            })
-
+        return client.get('/users/me').then(({data}) => {
+            const {user} = data
+            dispatch({
+                type: types.GET_USER_SUCCESS,
+                payload: {user}
+            });
+        }).catch((error) => {
+            dispatch({
+                type: types.GET_USER_FAILED,
+                payload: error
+            });
+        })
     };
 }
 
 export const editUser = ({username, firstName, lastName, city}) => {
-    return (dispatch) => {
+    return (dispatch, getState) => {
+        const { isFetching } = getState().services
+        if(isFetching.editUser) {
+            return Promise.resolve()
+        }
         dispatch({
             type: types.EDIT_USER_REQUESTED,
             payload: {username, firstName, lastName, city}
         });
-        client.post('/users/me', {
+        return client.post('/users/me', {
             data: {
                 username,
                 firstName,
@@ -108,12 +123,9 @@ export const editUser = ({username, firstName, lastName, city}) => {
                 type: types.EDIT_USER_SUCCESS,
                 payload: data
             });
-        }).catch((error) => {
-            dispatch({
-                type: types.EDIT_USER_FAILED,
-                payload: error
-            });
-        })
-
+        }).catch(error => dispatch({
+            type: types.EDIT_USER_FAILED,
+            payload: error
+        }))
     };
 }
