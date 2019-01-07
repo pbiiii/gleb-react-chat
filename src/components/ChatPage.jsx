@@ -6,11 +6,10 @@ import {
     ChatDrawer,
     AppTopBar,
     ChatMessageList,
-    ChatMessageInput
+    ChatMessageInput,
+    ErrorMessage
 } from '@src/components'
 import {Typography} from '@material-ui/core/es/index';
-import {mountChat, socketsConnect, unMountChat} from "@src/store/sockets/actions";
-import {createChat} from "@src/store/chats/actions";
 
 const styles = theme => ({
     root: {
@@ -77,7 +76,7 @@ class ChatPageComponent extends React.Component {
     render() {
         const {
             classes,
-            unMountChat,
+            error,
             logout,
             activeUser,
             editUser,
@@ -129,6 +128,7 @@ class ChatPageComponent extends React.Component {
                         </Typography>
                     )}
                 </main>
+                <ErrorMessage error={error} />
             </div>
         );
     }

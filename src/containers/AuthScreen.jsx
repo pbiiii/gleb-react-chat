@@ -5,7 +5,8 @@ import { AuthPage } from "@src/components/index";
 import { register, login } from '@src/store/auth/actions'
 
 const mapStateToProps = state => ({
-    isAuthenticated: state.auth.user.isAuthenticated
+    isAuthenticated: state.user.isAuthenticated,
+    error: state.services.errors.auth
 });
 
 const mapDispatchToProps = dispatch =>

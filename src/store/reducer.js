@@ -1,17 +1,17 @@
 import { combineReducers } from 'redux'
-import { reducer as auth } from './auth/reducers'
+import { user } from './auth/reducers'
 import { chats } from './chats/reducers'
 import { messages } from "./messages/reducers";
 import { services } from "./services/reducers";
 
 export default combineReducers({
-    auth,
+    user,
     chats,
     messages,
     services,
 });
 
-export const getActiveUser = (state) => state.auth.user.info
+export const getActiveUser = (state) => state.user.info
 export const getUserId = (user) => user._id
 
 export const isCreator = (state, chat) => {

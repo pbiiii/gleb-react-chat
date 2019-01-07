@@ -1,5 +1,5 @@
 import React from 'react';
-import { AuthForm } from '@src/components';
+import { AuthForm, ErrorMessage } from '@src/components';
 import { Redirect } from 'react-router-dom';
 import { withStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
@@ -124,6 +124,7 @@ class AuthPageComponent extends React.Component {
                         </Paper>
                     </Grid>
                 </Grid>
+                <ErrorMessage error={error} />
             </React.Fragment>
         );
     }

@@ -18,7 +18,7 @@ export const socketsConnect = () => {
         if(isFetching.sockets) {
             return Promise.resolve()
         }
-        const { token } = state.auth.user
+        const { token } = state.user
         dispatch({
             type: types.SOCKETS_CONNECTION_REQUEST,
 

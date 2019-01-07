@@ -11,23 +11,19 @@ export const register = ({username, password}) => {
             type: types.REGISTER_REQUESTED
         });
         return client.post('/signup', {username, password}).then(({data}) => {
-            const {success, message} = data;
+            const { success, message } = data;
             if (success) {
                 dispatch({
                     type: types.REGISTER_SUCCESS,
-                    payload: false
+                    payload: data
                 })
             } else {
-                if (message === 'Username is already taken') {
-                    dispatch({
-                        type: types.USER_ALREADY_EXISTS,
-                        payload: false
-                    })
-                }
+                throw new Error(message);
             }
-        }).catch((error) => {
-            console.dir(error)
-        })
+        }).catch(error => dispatch({
+            type: types.REGISTER_FAILED,
+            payload: error
+        }))
     }
 }
 
@@ -51,11 +47,12 @@ export const login = ({username, password}) => {
                     payload: data
                 })
             } else {
-                console.dir(message)
+                throw new Error(message);
             }
-        }).catch((error) => {
-            console.dir(error)
-        })
+        }).catch(error => dispatch({
+            type: types.LOGIN_FAILED,
+            payload: error
+        }))
     }
 }
 
@@ -92,12 +89,10 @@ export const getUser = () => {
                 type: types.GET_USER_SUCCESS,
                 payload: {user}
             });
-        }).catch((error) => {
-            dispatch({
-                type: types.GET_USER_FAILED,
-                payload: error
-            });
-        })
+        }).catch(error => dispatch({
+            type: types.GET_USER_FAILED,
+            payload: error
+        }))
     };
 }
 

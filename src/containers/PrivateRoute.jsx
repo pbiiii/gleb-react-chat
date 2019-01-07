@@ -5,7 +5,7 @@ import { withRouter, Route, Redirect } from 'react-router-dom';
 import { getUser } from "@src/store/auth/actions";
 
 const mapStateToProps = state => ({
-    isAuthenticated: state.auth.user.isAuthenticated,
+    isAuthenticated: state.user.isAuthenticated,
 });
 
 const mapDispatchToProps = dispatch =>
