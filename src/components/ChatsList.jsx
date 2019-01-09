@@ -14,13 +14,16 @@ const styles = () => ({
     },
 });
 
-const ChatsList = ({ chats, classes, activeChat }) => (
+const ChatsList = ({
+    chats, classes, activeChat, disabled,
+}) => (
     <List
         className={classes.list}
     >
         {chats && chats.length > 0 ? (
             chats.map(chat => (
                 <ChatItem
+                    disabled={disabled}
                     chat={chat}
                     key={chat._id}
                     active={activeChat && (activeChat._id === chat._id)}

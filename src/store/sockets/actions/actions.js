@@ -7,6 +7,7 @@ let socket = null;
 
 export const socketConnectionMissing = () => ({
     type: types.SOCKETS_CONNECTION_MISSING,
+    payload: new Error('Missing connection'),
 });
 
 // eslint-disable-next-line consistent-return
@@ -32,15 +33,17 @@ export const socketsConnect = () => (dispatch, getState) => {
         });
     });
 
-    socket.on('error', () => {
+    socket.on('error', (error) => {
         dispatch({
             type: types.SOCKETS_CONNECTION_FAILED,
+            payload: new Error(`Connection: ${error}`),
         });
     });
 
     socket.on('connect_error', () => {
         dispatch({
             type: types.SOCKETS_CONNECTION_FAILED,
+            payload: new Error('Connection lost'),
         });
     });
 

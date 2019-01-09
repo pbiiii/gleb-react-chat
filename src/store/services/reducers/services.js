@@ -23,6 +23,7 @@ const initialState = {
         auth: null,
         chats: null,
     },
+    isConnected: false,
 };
 
 const isFetching = (state = initialState.isFetching, action) => {
@@ -117,7 +118,9 @@ const errors = (state = initialState.errors, action) => {
         case chatsTypes.JOIN_CHAT_FAILED:
         case chatsTypes.LEAVE_CHAT_FAILED:
         case chatsTypes.DELETE_CHAT_FAILED:
-            return { ...state, chat: action.payload };
+        case socketsTypes.SOCKETS_CONNECTION_FAILED:
+        case socketsTypes.SOCKETS_CONNECTION_MISSING:
+            return { ...state, chats: action.payload };
         case authTypes.EDIT_USER_SUCCESS:
         case chatsTypes.FETCH_ALL_CHATS_SUCCESS:
         case chatsTypes.FETCH_MY_CHATS_SUCCESS:
@@ -126,8 +129,22 @@ const errors = (state = initialState.errors, action) => {
         case chatsTypes.JOIN_CHAT_SUCCESS:
         case chatsTypes.LEAVE_CHAT_SUCCESS:
         case chatsTypes.DELETE_CHAT_SUCCESS:
-            return { ...state, chat: null };
+        case socketsTypes.SOCKETS_CONNECTION_SUCCESS:
+        case socketsTypes.SOCKETS_CONNECTION_REQUEST:
+            return { ...state, chats: null };
 
+        default:
+            return state;
+    }
+};
+
+const isConnected = (state = initialState.isConnected, action) => {
+    switch (action.type) {
+        case socketsTypes.SOCKETS_CONNECTION_MISSING:
+        case socketsTypes.SOCKETS_CONNECTION_FAILED:
+            return false;
+        case socketsTypes.SOCKETS_CONNECTION_SUCCESS:
+            return true;
         default:
             return state;
     }
@@ -137,4 +154,5 @@ const errors = (state = initialState.errors, action) => {
 export const services = combineReducers({
     isFetching,
     errors,
+    isConnected,
 });

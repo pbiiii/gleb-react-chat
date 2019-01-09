@@ -37,8 +37,8 @@ class ChatMenu extends React.Component {
             activeChat,
             activeUser,
             classes,
+            disabled,
         } = this.props;
-        const disabled = false;
         const { anchorEl } = this.state;
         const chatTitle = activeChat.title.substring(0, 2).toUpperCase();
         return (

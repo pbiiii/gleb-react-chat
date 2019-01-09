@@ -86,6 +86,7 @@ class ChatPage extends React.Component {
             joinChat,
             messages,
             sendMessage,
+            isConnected,
         } = this.props;
         const activeChat = chats.active;
         return (
@@ -98,12 +99,14 @@ class ChatPage extends React.Component {
                     activeChat={activeChat}
                     leaveChat={leaveChat}
                     deleteChat={deleteChat}
+                    isConnected={isConnected}
                 />
                 <ChatDrawer
                     allChats={chats.all}
                     myChats={chats.my}
                     activeChat={activeChat}
                     onCreateChat={createChat}
+                    isConnected={isConnected}
                 />
                 <main
                     className={classNames(classes.content, !activeChat && classes.noActiveChat)}
@@ -118,6 +121,7 @@ class ChatPage extends React.Component {
                                 sendMessage={sendMessage}
                                 joinChat={() => joinChat({ chat: activeChat })}
                                 activeUser={activeUser}
+                                disabled={!isConnected}
                             />
                         </React.Fragment>
                     )}

@@ -65,7 +65,9 @@ class UserMenu extends React.Component {
     }
 
     render() {
-        const { anchorEl, modalIsOpen, editProfileForm } = this.state;
+        const {
+            anchorEl, modalIsOpen, editProfileForm, disabled,
+        } = this.state;
         return (
             <React.Fragment>
                 <IconButton
@@ -73,6 +75,7 @@ class UserMenu extends React.Component {
                     aria-owns={anchorEl ? 'simple-menu' : undefined}
                     aria-haspopup="true"
                     onClick={this.openMenu}
+                    disabled={disabled}
                 >
                     <AccountCircle />
                 </IconButton>

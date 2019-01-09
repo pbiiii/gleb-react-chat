@@ -5,7 +5,7 @@ import Avatar from '@material-ui/core/Avatar';
 import { Link } from 'react-router-dom';
 import moment from 'moment';
 
-const ChatItem = ({ chat, active }) => {
+const ChatItem = ({ chat, active, disabled }) => {
     const {
         _id: chatId,
         title,
@@ -18,6 +18,7 @@ const ChatItem = ({ chat, active }) => {
             component={Link}
             to={`/chat/${chatId}`}
             selected={active}
+            disabled={disabled}
         >
             <Avatar>{avatarTitle}</Avatar>
             <ListItemText primary={title} secondary={moment(createdAt).fromNow()} />

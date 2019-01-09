@@ -51,6 +51,7 @@ class ChatDrawer extends React.Component {
             myChats,
             onCreateChat,
             activeChat,
+            isConnected,
         } = this.props;
         const { activeTab } = this.state;
         return (
@@ -65,11 +66,13 @@ class ChatDrawer extends React.Component {
                 <DrawerSearchInput />
                 <Divider />
                 <ChatsList
+                    disabled={!isConnected}
                     activeChat={activeChat}
                     chats={activeTab === 'my' ? myChats : allChats}
                 />
                 <AddChat
                     onCreateChat={onCreateChat}
+                    disabled={!isConnected}
                 />
                 <DrawerBottomNavigation
                     activeTab={activeTab}

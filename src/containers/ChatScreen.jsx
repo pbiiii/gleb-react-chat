@@ -36,6 +36,7 @@ const mapStateToProps = (state) => {
         },
         messages,
         error: state.services.errors.chats,
+        isConnected: state.services.isConnected,
     };
 };
 
