@@ -1,17 +1,11 @@
 import React from 'react';
-import { withStyles } from "@material-ui/core/styles/index";
-import IconButton from "@material-ui/core/IconButton";
+import IconButton from '@material-ui/core/IconButton';
 import AccountCircle from '@material-ui/icons/AccountCircle';
 import Menu from '@material-ui/core/Menu';
-import MenuItem from "@material-ui/core/MenuItem";
-import { EditProfileModal } from "./EditProfileModal";
+import MenuItem from '@material-ui/core/MenuItem';
+import EditProfileModal from './EditProfileModal';
 
-const styles = theme => ({
-
-});
-
-class UserMenuComponent extends React.Component {
-
+class UserMenu extends React.Component {
     state = {
         anchorEl: null,
         modalIsOpen: false,
@@ -19,55 +13,59 @@ class UserMenuComponent extends React.Component {
             username: '',
             firstName: '',
             lastName: '',
-        }
+        },
     };
 
     componentWillReceiveProps(nextProps) {
+        const { username, firstName, lastName } = nextProps.activeUser;
         this.setState({
             ...this.state,
             editProfileForm: {
-                username: nextProps.activeUser.username,
-                firstName: nextProps.activeUser.firstName,
-                lastName: nextProps.activeUser.lastName,
-            }
+                username,
+                firstName,
+                lastName,
+            },
         });
     }
 
-    openMenu = event => {
-        this.setState({ anchorEl: event.currentTarget });
-    };
+    openMenu = event => this.setState({ anchorEl: event.currentTarget });
 
     closeMenu = () => {
         this.setState({ anchorEl: null });
     };
 
     handleToggleModal = () => {
-        this.setState({modalIsOpen: !this.state.modalIsOpen})
-        this.closeMenu()
-    }
+        const { modalIsOpen } = this.state;
+        this.setState({ modalIsOpen });
+        this.closeMenu();
+    };
 
     onInputChange = (event) => {
+        const { editProfileForm } = this.state;
         this.setState({
             ...this.state,
             editProfileForm: {
-                ...this.state.editProfileForm,
+                ...editProfileForm,
                 [event.target.name]: event.target.value,
-            }
+            },
         });
-    }
+    };
 
     updateProfile = () => {
-        this.props.editUser({...this.state.editProfileForm})
-        this.handleToggleModal()
+        const { editUser } = this.props;
+        const { editProfileForm } = this.state;
+        editUser({ ...editProfileForm });
+        this.handleToggleModal();
     }
 
     handleLogout = () => {
-        this.props.logout()
-        this.closeMenu()
+        const { logout } = this.props;
+        logout();
+        this.closeMenu();
     }
 
     render() {
-        const { anchorEl } = this.state;
+        const { anchorEl, modalIsOpen, editProfileForm } = this.state;
         return (
             <React.Fragment>
                 <IconButton
@@ -96,15 +94,15 @@ class UserMenuComponent extends React.Component {
                     </MenuItem>
                 </Menu>
                 <EditProfileModal
-                    isOpen={this.state.modalIsOpen}
+                    isOpen={modalIsOpen}
                     onClose={this.handleToggleModal}
                     onUpdateProfile={this.updateProfile}
                     onInputChange={this.onInputChange}
-                    form={this.state.editProfileForm}
+                    form={editProfileForm}
                 />
             </React.Fragment>
-        )
-    };
+        );
+    }
 }
 
-export const UserMenu = withStyles(styles)(UserMenuComponent);
+export default UserMenu;

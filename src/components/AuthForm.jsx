@@ -1,8 +1,15 @@
-import React from 'react'
+import React from 'react';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 
-export const AuthForm = ({username, password, repeatedPassword, onChange, onSubmit, isRegisterForm}) => (
+const AuthForm = ({
+    username,
+    password,
+    repeatedPassword,
+    onChange,
+    onSubmit,
+    isRegisterForm,
+}) => (
     <form onSubmit={onSubmit}>
         <TextField
             required
@@ -30,20 +37,22 @@ export const AuthForm = ({username, password, repeatedPassword, onChange, onSubm
             onChange={onChange}
             error={!password.isValid}
         />
-        {isRegisterForm &&
-        <TextField
-            required
-            fullWidth
-            label="Repeat password"
-            placeholder="Repeat your password..."
-            type="password"
-            name="repeatedPassword"
-            margin="normal"
-            autoComplete="current-password"
-            value={repeatedPassword.value}
-            onChange={onChange}
-            error={!repeatedPassword.isValid}
-        />
+        { isRegisterForm
+        && (
+            <TextField
+                required
+                fullWidth
+                label="Repeat password"
+                placeholder="Repeat your password..."
+                type="password"
+                name="repeatedPassword"
+                margin="normal"
+                autoComplete="current-password"
+                value={repeatedPassword.value}
+                onChange={onChange}
+                error={!repeatedPassword.isValid}
+            />
+        )
         }
         <Button
             fullWidth
@@ -51,10 +60,12 @@ export const AuthForm = ({username, password, repeatedPassword, onChange, onSubm
             type="submit"
             color="primary"
         >
-            {isRegisterForm ?
-                'Register' :
-                'Login'
+            { isRegisterForm
+                ? 'Register'
+                : 'Login'
             }
         </Button>
     </form>
-)
+);
+
+export default AuthForm;

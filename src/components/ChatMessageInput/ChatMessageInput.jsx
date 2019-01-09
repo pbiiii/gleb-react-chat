@@ -1,5 +1,5 @@
 import React from 'react';
-import {withStyles} from '@material-ui/core/styles';
+import { withStyles } from '@material-ui/core/styles';
 import Input from '@material-ui/core/Input';
 import Button from '@material-ui/core/Button';
 import Paper from '@material-ui/core/Paper';
@@ -9,7 +9,7 @@ const styles = theme => ({
     wrapper: {
         position: 'fixed',
         minHeight: theme.spacing.unit * 8,
-        width: `calc(100% - 320px)`,
+        width: 'calc(100% - 320px)',
         bottom: 0,
         right: 0,
         left: 'auto',
@@ -18,42 +18,36 @@ const styles = theme => ({
     inputWrapper: {
         padding: theme.spacing.unit * 2,
         backgroundColor: '#fff',
-        boxShadow: '1px '
+        boxShadow: '1px',
     },
-    input: {
-
-    }
+    input: {},
 });
 
-class ChatMessageInputComponent extends React.Component {
-
+class ChatMessageInput extends React.Component {
     state = {
         content: '',
     }
 
-    onMessageChange = (event) => {
-        this.setState({
-            content: event.target.value
-        })
-    }
+    onMessageChange = event => this.setState({ content: event.target.value });
 
     onKeyPress = (event) => {
         const { content } = this.state;
+        const { sendMessage } = this.props;
         if (event.key === 'Enter' && content) {
-            this.props.sendMessage(content);
+            sendMessage(content);
             this.setState({ content: '' });
         }
     };
 
     render() {
-        const { content } = this.state
+        const { content } = this.state;
         const {
             classes,
             activeUser,
             joinChat,
             disabled,
-        } = this.props
-        const showJoinButton = !activeUser.isChatMember
+        } = this.props;
+        const showJoinButton = !activeUser.isChatMember;
         return (
             <div
                 className={classes.wrapper}
@@ -85,8 +79,8 @@ class ChatMessageInputComponent extends React.Component {
                     }
                 </Paper>
             </div>
-        )
+        );
     }
 }
 
-export const ChatMessageInput = withStyles(styles)(ChatMessageInputComponent);
+export default withStyles(styles)(ChatMessageInput);

@@ -1,1 +1,2 @@
-export const REDIRECT = 'REDIRECT'
+// eslint-disable-next-line
+export const REDIRECT = 'REDIRECT';

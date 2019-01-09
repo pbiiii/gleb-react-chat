@@ -2,23 +2,22 @@ import React from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { withRouter, Route, Redirect } from 'react-router-dom';
-import { getUser } from "@src/store/auth/actions";
+import { getUser } from 'src/store/auth/actions';
 
 const mapStateToProps = state => ({
     isAuthenticated: state.user.isAuthenticated,
 });
 
-const mapDispatchToProps = dispatch =>
-    bindActionCreators(
-        {
-            getUser,
-        },
-        dispatch,
-    );
+const mapDispatchToProps = dispatch => bindActionCreators(
+    {
+        getUser,
+    },
+    dispatch,
+);
 
-class PrivateRouteComponent extends React.Component {
-
+class PrivateRoute extends React.Component {
     componentDidMount() {
+        // eslint-disable-next-line
         this.props.getUser();
     }
 
@@ -27,21 +26,20 @@ class PrivateRouteComponent extends React.Component {
         return (
             <Route
                 {...rest}
-                render={props =>
-                    (isAuthenticated ? (
-                        <Component {...props} />
-                    ) : (
-                        <Redirect
-                            to={{
-                                pathname: '/auth',
-                                state: { from: props.location },
-                            }}
-                        />
-                    ))
+                render={props => (isAuthenticated ? (
+                    <Component {...props} />
+                ) : (
+                    <Redirect
+                        to={{
+                            pathname: '/auth',
+                            state: { from: props.location },
+                        }}
+                    />
+                ))
                 }
             />
         );
     }
 }
 
-export const PrivateRoute = withRouter(connect(mapStateToProps, mapDispatchToProps)(PrivateRouteComponent));
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(PrivateRoute));

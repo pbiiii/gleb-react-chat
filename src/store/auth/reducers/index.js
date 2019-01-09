@@ -1,1 +1,2 @@
-export { user } from './user'
+// eslint-disable-next-line
+export { user } from './user';

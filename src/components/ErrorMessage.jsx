@@ -3,36 +3,37 @@ import Snackbar from '@material-ui/core/Snackbar';
 import IconButton from '@material-ui/core/IconButton';
 import CloseIcon from '@material-ui/icons/Close';
 
-class ErrorMessageComponent extends React.Component {
+class ErrorMessage extends React.Component {
     state = {
         open: false,
     };
 
-    handleClose = (event, reason) => {
-        this.setState({ open: false });
-    };
-
     componentWillReceiveProps(nextProps) {
-        if(nextProps.error) {
-            this.setState({ open: true })
+        if (nextProps.error) {
+            this.setState({ open: true });
         }
     }
 
+    handleClose = () => {
+        this.setState({ open: false });
+    };
+
     render() {
         const { error } = this.props;
-        if(!error) {
-            return null
+        if (!error) {
+            return null;
         }
+        const { open } = this.state;
         return (
             <Snackbar
                 anchorOrigin={{
                     vertical: 'bottom',
                     horizontal: 'left',
                 }}
-                open={this.state.open}
+                open={open}
                 autoHideDuration={6000}
                 onClose={this.handleClose}
-                message={<span >{error.message}</span>}
+                message={<span>{error.message}</span>}
                 action={[
                     <IconButton
                         key="close"
@@ -48,4 +49,4 @@ class ErrorMessageComponent extends React.Component {
     }
 }
 
-export const ErrorMessage = ErrorMessageComponent
+export default ErrorMessage;

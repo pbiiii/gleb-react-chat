@@ -1,12 +1,12 @@
 import React from 'react';
 import List from '@material-ui/core/List';
-import { ChatItem } from './ChatItem'
-import { withStyles } from "@material-ui/core/styles/index";
-import { Typography } from "@material-ui/core";
+import { withStyles } from '@material-ui/core/styles/index';
+import { Typography } from '@material-ui/core';
+import ChatItem from './ChatItem';
 
-const styles = theme => ({
+const styles = () => ({
     subtitle: {
-        textAlign: 'center'
+        textAlign: 'center',
     },
     list: {
         height: '100%',
@@ -14,29 +14,27 @@ const styles = theme => ({
     },
 });
 
-const ChatsListComponent = ({chats, classes, activeChat}) => {
-
-    return (
-        <List
-            className={classes.list}
-        >
-            {chats && chats.length > 0 ?(
-                chats.map(chat => (
+const ChatsList = ({ chats, classes, activeChat }) => (
+    <List
+        className={classes.list}
+    >
+        {chats && chats.length > 0 ? (
+            chats.map(chat => (
                 <ChatItem
                     chat={chat}
                     key={chat._id}
                     active={activeChat && (activeChat._id === chat._id)}
                 />
-            ))) : (
-                <Typography
-                    variant="body1"
-                    className={classes.subtitle}
-                >
-                    There is no chats yet...
-                </Typography>
-            )}
-        </List>
-    );
-}
+            ))
+        ) : (
+            <Typography
+                variant="body1"
+                className={classes.subtitle}
+            >
+                There is no chats yet...
+            </Typography>
+        )}
+    </List>
+);
 
-export const ChatsList = withStyles(styles)(ChatsListComponent);
+export default withStyles(styles)(ChatsList);

@@ -1,1 +1,2 @@
-export { messages } from './messages'
+// eslint-disable-next-line
+export { messages } from './messages';

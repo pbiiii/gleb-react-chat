@@ -1,9 +1,11 @@
 import React from 'react';
-import {withStyles} from '@material-ui/core/styles';
+import { withStyles } from '@material-ui/core/styles';
 import Drawer from '@material-ui/core/Drawer';
 import Divider from '@material-ui/core/Divider';
-import { DrawerSearchInput, ChatsList, DrawerBottomNavigation, AddChat } from "@src/components";
-
+import DrawerSearchInput from './DrawerSearchInput';
+import ChatsList from './ChatsList';
+import AddChat from './AddChat';
+import DrawerBottomNavigation from './DrawerBottomNavigation';
 
 const drawerWidth = 320;
 
@@ -30,15 +32,17 @@ const styles = theme => ({
     },
 });
 
-class ChatDrawerComponent extends React.Component {
-
+class ChatDrawer extends React.Component {
     state = {
-        activeTab: 'my'
-    }
+        activeTab: 'my',
+    };
 
     onTabChange = (event, tabIndex) => {
-        this.setState({ ...this.state, activeTab: tabIndex })
-    }
+        this.setState({
+            ...this.state,
+            activeTab: tabIndex,
+        });
+    };
 
     render() {
         const {
@@ -47,7 +51,8 @@ class ChatDrawerComponent extends React.Component {
             myChats,
             onCreateChat,
             activeChat,
-        } = this.props
+        } = this.props;
+        const { activeTab } = this.state;
         return (
             <Drawer
                 className={classes.drawer}
@@ -57,17 +62,17 @@ class ChatDrawerComponent extends React.Component {
                 }}
                 anchor="left"
             >
-                <DrawerSearchInput/>
-                <Divider/>
+                <DrawerSearchInput />
+                <Divider />
                 <ChatsList
                     activeChat={activeChat}
-                    chats={this.state.activeTab === 'my' ? myChats : allChats}
+                    chats={activeTab === 'my' ? myChats : allChats}
                 />
                 <AddChat
                     onCreateChat={onCreateChat}
                 />
                 <DrawerBottomNavigation
-                    activeTab={this.state.activeTab}
+                    activeTab={activeTab}
                     onTabChange={this.onTabChange}
                 />
             </Drawer>
@@ -75,4 +80,4 @@ class ChatDrawerComponent extends React.Component {
     }
 }
 
-export const ChatDrawer = withStyles(styles)(ChatDrawerComponent);
+export default withStyles(styles)(ChatDrawer);

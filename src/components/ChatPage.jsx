@@ -1,15 +1,13 @@
 import React from 'react';
 import { withStyles } from '@material-ui/core/styles';
 import CssBaseline from '@material-ui/core/CssBaseline';
-import classNames from 'classnames'
-import {
-    ChatDrawer,
-    AppTopBar,
-    ChatMessageList,
-    ChatMessageInput,
-    ErrorMessage
-} from '@src/components'
-import {Typography} from '@material-ui/core/es/index';
+import classNames from 'classnames';
+import { Typography } from '@material-ui/core/es/index';
+import AppTopBar from './AppTopBar';
+import ChatDrawer from './ChatDrawer';
+import ChatMessageList from './ChatMessageList';
+import ChatMessageInput from './ChatMessageInput/ChatMessageInput';
+import ErrorMessage from './ErrorMessage';
 
 const styles = theme => ({
     root: {
@@ -33,12 +31,11 @@ const styles = theme => ({
         position: 'relative',
     },
     noActiveChat: {
-        alignItems: 'center'
-    }
+        alignItems: 'center',
+    },
 });
 
-class ChatPageComponent extends React.Component {
-
+class ChatPage extends React.Component {
     componentDidMount() {
         const {
             fetchAllChats,
@@ -47,29 +44,31 @@ class ChatPageComponent extends React.Component {
             socketsConnect,
             setActiveChat,
             mountChat,
-        } = this.props
+        } = this.props;
         Promise.all([
             fetchAllChats(),
             fetchMyChats(),
         ]).then(() => {
-            socketsConnect()
+            socketsConnect();
         }).then(() => {
-            const { chatId } = match.params
+            const { chatId } = match.params;
             if (chatId) {
                 setActiveChat(chatId);
-                mountChat(chatId)
+                mountChat(chatId);
             }
-        })
+        });
     }
 
     componentWillReceiveProps(nextProps) {
-        const { match: { params }, setActiveChat, mountChat, unMountChat } = this.props;
+        const {
+            match: { params }, setActiveChat, mountChat, unMountChat,
+        } = this.props;
         const { params: nextParams } = nextProps.match;
 
         if (nextParams.chatId && (params.chatId !== nextParams.chatId)) {
-            setActiveChat(nextParams.chatId)
-            unMountChat(params.chatId)
-            mountChat(nextParams.chatId)
+            setActiveChat(nextParams.chatId);
+            unMountChat(params.chatId);
+            mountChat(nextParams.chatId);
         }
     }
 
@@ -88,7 +87,7 @@ class ChatPageComponent extends React.Component {
             messages,
             sendMessage,
         } = this.props;
-        const activeChat = chats.active
+        const activeChat = chats.active;
         return (
             <div className={classes.root}>
                 <CssBaseline />
@@ -117,13 +116,13 @@ class ChatPageComponent extends React.Component {
                             />
                             <ChatMessageInput
                                 sendMessage={sendMessage}
-                                joinChat={() => joinChat({chat: activeChat})}
+                                joinChat={() => joinChat({ chat: activeChat })}
                                 activeUser={activeUser}
                             />
                         </React.Fragment>
                     )}
                     {!activeChat && (
-                        <Typography variant={'h5'}>
+                        <Typography variant="h5">
                             Please select or create chat
                         </Typography>
                     )}
@@ -134,4 +133,4 @@ class ChatPageComponent extends React.Component {
     }
 }
 
-export const ChatPage = withStyles(styles)(ChatPageComponent);
+export default withStyles(styles)(ChatPage);

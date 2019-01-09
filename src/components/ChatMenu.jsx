@@ -1,5 +1,5 @@
 import React from 'react';
-import {withStyles} from "@material-ui/core/styles/index";
+import { withStyles } from '@material-ui/core/styles/index';
 import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
 import IconButton from '@material-ui/core/IconButton';
@@ -11,23 +11,20 @@ const styles = theme => ({
     chatMenuContainer: {
         color: '#fff',
         display: 'flex',
-        alignItems: 'center'
+        alignItems: 'center',
     },
     chatMenuTitle: {
         color: '#fff',
-        marginLeft: theme.spacing.unit * 2
-    }
+        marginLeft: theme.spacing.unit * 2,
+    },
 });
 
-class ChatMenuComponent extends React.Component {
+class ChatMenu extends React.Component {
     state = {
         anchorEl: null,
-        modalIsOpen: false,
     };
 
-    openMenu = event => {
-        this.setState({ anchorEl: event.currentTarget });
-    };
+    openMenu = event => this.setState({ anchorEl: event.currentTarget });
 
     closeMenu = () => {
         this.setState({ anchorEl: null });
@@ -35,16 +32,15 @@ class ChatMenuComponent extends React.Component {
 
     render() {
         const {
-            // disabled = false,
             leaveChat,
             deleteChat,
             activeChat,
             activeUser,
             classes,
-        } = this.props
-        const disabled = false
+        } = this.props;
+        const disabled = false;
         const { anchorEl } = this.state;
-        const chatTitle = activeChat.title.substring(0, 2).toUpperCase()
+        const chatTitle = activeChat.title.substring(0, 2).toUpperCase();
         return (
             <div className={classes.chatMenuContainer}>
                 <Avatar>{chatTitle}</Avatar>
@@ -60,7 +56,7 @@ class ChatMenuComponent extends React.Component {
                             disabled={disabled}
                             onClick={this.openMenu}
                         >
-                            <MoreVertIcon/>
+                            <MoreVertIcon />
                         </IconButton>
                         <Menu
                             id="chat-menu"
@@ -68,8 +64,12 @@ class ChatMenuComponent extends React.Component {
                             open={Boolean(anchorEl)}
                             onClose={this.closeMenu}
                         >
-                            {activeUser.isMember && <MenuItem onClick={leaveChat}>Leave chat</MenuItem>}
-                            {activeUser.isCreator && <MenuItem onClick={deleteChat}>Delete chat</MenuItem>}
+                            {activeUser.isMember && (
+                                <MenuItem onClick={leaveChat}>Leave chat</MenuItem>
+                            )}
+                            {activeUser.isCreator && (
+                                <MenuItem onClick={deleteChat}>Delete chat</MenuItem>
+                            )}
                         </Menu>
                     </React.Fragment>
                 )}
@@ -78,4 +78,4 @@ class ChatMenuComponent extends React.Component {
     }
 }
 
-export const ChatMenu = withStyles(styles)(ChatMenuComponent);
+export default withStyles(styles)(ChatMenu);

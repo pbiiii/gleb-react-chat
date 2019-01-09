@@ -1,5 +1,5 @@
 import React from 'react';
-import {withStyles} from '@material-ui/core/styles';
+import { withStyles } from '@material-ui/core/styles';
 import Input from '@material-ui/core/Input';
 
 const styles = theme => ({
@@ -14,15 +14,13 @@ const styles = theme => ({
     },
 });
 
-const DrawerSearchInputComponent = ({classes}) => {
-    return (
-        <div className={classes.toolbar}>
-            <Input
-                className={classes.toolbarInput}
-                placeholder={'Search chats...'}
-            />
-        </div>
-    );
-}
+const DrawerSearchInput = ({ classes }) => (
+    <div className={classes.toolbar}>
+        <Input
+            className={classes.toolbarInput}
+            placeholder="Search chats..."
+        />
+    </div>
+);
 
-export const DrawerSearchInput = withStyles(styles)(DrawerSearchInputComponent);
+export default withStyles(styles)(DrawerSearchInput);

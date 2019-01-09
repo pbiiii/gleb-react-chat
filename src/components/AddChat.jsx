@@ -1,12 +1,12 @@
 import React from 'react';
-import { withStyles } from "@material-ui/core/styles/index";
+import { withStyles } from '@material-ui/core/styles/index';
 import AddIcon from '@material-ui/icons/Add';
 import Fab from '@material-ui/core/Fab';
-import Modal from "@material-ui/core/Modal";
-import Paper from "@material-ui/core/Paper";
-import Typography from "@material-ui/core/Typography";
-import TextField from "@material-ui/core/TextField";
-import Button from "@material-ui/core/Button";
+import Modal from '@material-ui/core/Modal';
+import Paper from '@material-ui/core/Paper';
+import Typography from '@material-ui/core/Typography';
+import TextField from '@material-ui/core/TextField';
+import Button from '@material-ui/core/Button';
 
 
 const styles = theme => ({
@@ -24,11 +24,10 @@ const styles = theme => ({
         padding: theme.spacing.unit * 3,
         width: '30%',
         minWidth: '300px',
-    }
+    },
 });
 
-class AddChatComponent extends React.Component {
-
+class AddChat extends React.Component {
     state = {
         open: false,
         title: {
@@ -38,28 +37,24 @@ class AddChatComponent extends React.Component {
     }
 
     toggleModal = () => {
+        const { open } = this.state;
         this.setState({
-            ...this.state,
-            open: !this.state.open
-        })
+            open: !open,
+        });
     }
 
     onTitleChange = (event) => {
-        const { value } = event.target
+        const { value } = event.target;
         this.setState({
-            ...this.state,
-            title: {
-                ...this.state.title,
-                value
-            }
-        })
+            title: { value },
+        });
     }
 
     handleCreateClick = () => {
-        const { onCreateChat } = this.props
-        const { title } = this.state
-        onCreateChat(title.value)
-        this.toggleModal()
+        const { onCreateChat } = this.props;
+        const { title } = this.state;
+        onCreateChat(title.value);
+        this.toggleModal();
     }
 
     render() {
@@ -67,12 +62,13 @@ class AddChatComponent extends React.Component {
         const { open, title } = this.state;
         return (
             <React.Fragment>
-                <Fab color="primary"
-                     className={classes.fab}
-                     disabled={disabled}
-                     onClick={this.toggleModal}
+                <Fab
+                    color="primary"
+                    className={classes.fab}
+                    disabled={disabled}
+                    onClick={this.toggleModal}
                 >
-                    <AddIcon/>
+                    <AddIcon />
                 </Fab>
                 <Modal open={open} className={classes.modalWrapper} onClose={this.toggleModal}>
                     <Paper className={classes.modal}>
@@ -97,8 +93,8 @@ class AddChatComponent extends React.Component {
                     </Paper>
                 </Modal>
             </React.Fragment>
-        )
-    };
+        );
+    }
 }
 
-export const AddChat = withStyles(styles)(AddChatComponent);
+export default withStyles(styles)(AddChat);

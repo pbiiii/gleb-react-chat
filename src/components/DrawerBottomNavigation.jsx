@@ -1,32 +1,25 @@
 import React from 'react';
-import {withStyles} from '@material-ui/core/styles';
 import RestoreIcon from '@material-ui/icons/Restore';
 import ExploreIcon from '@material-ui/icons/Explore';
-import { BottomNavigation, BottomNavigationAction } from "@material-ui/core";
+import { BottomNavigation, BottomNavigationAction } from '@material-ui/core';
 
-const styles = theme => ({
+const DrawerBottomNavigation = ({ activeTab, onTabChange }) => (
+    <BottomNavigation
+        showLabels
+        value={activeTab}
+        onChange={onTabChange}
+    >
+        <BottomNavigationAction
+            label="My Chats"
+            icon={<RestoreIcon />}
+            value="my"
+        />
+        <BottomNavigationAction
+            label="Explore"
+            icon={<ExploreIcon />}
+            value="all"
+        />
+    </BottomNavigation>
+);
 
-});
-
-const DrawerBottomNavigationComponent = ({activeTab, onTabChange}) => {
-    return (
-        <BottomNavigation
-            showLabels
-            value={activeTab}
-            onChange={onTabChange}
-        >
-            <BottomNavigationAction
-                label="My Chats"
-                icon={<RestoreIcon />}
-                value="my"
-            />
-            <BottomNavigationAction
-                label="Explore"
-                icon={<ExploreIcon />}
-                value="all"
-            />
-        </BottomNavigation>
-    );
-}
-
-export const DrawerBottomNavigation = withStyles(styles)(DrawerBottomNavigationComponent);
+export default DrawerBottomNavigation;

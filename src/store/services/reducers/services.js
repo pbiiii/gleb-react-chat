@@ -1,7 +1,7 @@
-import { combineReducers } from 'redux'
-import * as authTypes from '@src/store/auth/actions/actionTypes'
-import * as chatsTypes from '@src/store/chats/actions/actionTypes'
-import * as socketsTypes from '@src/store/sockets/actions/actionTypes'
+import { combineReducers } from 'redux';
+import * as authTypes from 'src/store/auth/actions/actionTypes';
+import * as chatsTypes from 'src/store/chats/actions/actionTypes';
+import * as socketsTypes from 'src/store/sockets/actions/actionTypes';
 
 const initialState = {
     isFetching: {
@@ -22,92 +22,92 @@ const initialState = {
     errors: {
         auth: null,
         chats: null,
-    }
-}
+    },
+};
 
 const isFetching = (state = initialState.isFetching, action) => {
     switch (action.type) {
         case authTypes.REGISTER_REQUESTED:
-            return { ...state, register: true }
+            return { ...state, register: true };
         case authTypes.LOGIN_REQUESTED:
-            return { ...state, login: true }
+            return { ...state, login: true };
         case authTypes.LOGOUT_REQUESTED:
-            return { ...state, logout: true }
+            return { ...state, logout: true };
         case authTypes.GET_USER_REQUESTED:
-            return { ...state, getUser: true }
+            return { ...state, getUser: true };
         case authTypes.EDIT_USER_REQUESTED:
-            return { ...state, editUser: true }
+            return { ...state, editUser: true };
         case chatsTypes.FETCH_ALL_CHATS_REQUESTED:
-            return { ...state, allChats: true }
+            return { ...state, allChats: true };
         case chatsTypes.FETCH_MY_CHATS_REQUESTED:
-            return { ...state, myChats: true }
+            return { ...state, myChats: true };
         case chatsTypes.FETCH_CHAT_REQUESTED:
-            return { ...state, chat: true }
+            return { ...state, chat: true };
         case chatsTypes.CREATE_CHAT_REQUESTED:
-            return { ...state, createChat: true }
+            return { ...state, createChat: true };
         case chatsTypes.JOIN_CHAT_REQUESTED:
-            return { ...state, joinChat: true }
+            return { ...state, joinChat: true };
         case chatsTypes.LEAVE_CHAT_REQUESTED:
-            return { ...state, leaveChat: true }
+            return { ...state, leaveChat: true };
         case chatsTypes.DELETE_CHAT_REQUESTED:
-            return { ...state, deleteChat: true }
+            return { ...state, deleteChat: true };
         case socketsTypes.SOCKETS_CONNECTION_REQUEST:
-            return { ...state, sockets: true }
-            
+            return { ...state, sockets: true };
+
         case authTypes.REGISTER_SUCCESS:
         case authTypes.REGISTER_FAILED:
-            return { ...state, register: false }
+            return { ...state, register: false };
         case authTypes.LOGIN_SUCCESS:
         case authTypes.LOGIN_FAILED:
-            return { ...state, login: false }
+            return { ...state, login: false };
         case authTypes.LOGOUT_SUCCESS:
-            return { ...state, logout: false }
+            return { ...state, logout: false };
         case authTypes.GET_USER_SUCCESS:
         case authTypes.GET_USER_FAILED:
-            return { ...state, getUser: false }
+            return { ...state, getUser: false };
         case authTypes.EDIT_USER_SUCCESS:
         case authTypes.EDIT_USER_FAILED:
-            return { ...state, editUser: false }
+            return { ...state, editUser: false };
         case chatsTypes.FETCH_ALL_CHATS_SUCCESS:
         case chatsTypes.FETCH_ALL_CHATS_FAILED:
-            return { ...state, allChats: false }
+            return { ...state, allChats: false };
         case chatsTypes.FETCH_MY_CHATS_SUCCESS:
         case chatsTypes.FETCH_MY_CHATS_FAILED:
-            return { ...state, myChats: false }
+            return { ...state, myChats: false };
         case chatsTypes.FETCH_CHAT_SUCCESS:
         case chatsTypes.FETCH_CHAT_FAILED:
-            return { ...state, chat: false }
+            return { ...state, chat: false };
         case chatsTypes.CREATE_CHAT_SUCCESS:
         case chatsTypes.CREATE_CHAT_FAILED:
-            return { ...state, createChat: false }
+            return { ...state, createChat: false };
         case chatsTypes.JOIN_CHAT_SUCCESS:
         case chatsTypes.JOIN_CHAT_FAILED:
-            return { ...state, joinChat: false }
+            return { ...state, joinChat: false };
         case chatsTypes.LEAVE_CHAT_SUCCESS:
         case chatsTypes.LEAVE_CHAT_FAILED:
-            return { ...state, leaveChat: false }
+            return { ...state, leaveChat: false };
         case chatsTypes.DELETE_CHAT_SUCCESS:
         case chatsTypes.DELETE_CHAT_FAILED:
-            return { ...state, deleteChat: false }
+            return { ...state, deleteChat: false };
         case socketsTypes.SOCKETS_CONNECTION_SUCCESS:
         case socketsTypes.SOCKETS_CONNECTION_FAILED:
-            return { ...state, sockets: false }
+            return { ...state, sockets: false };
 
         default:
-            return state
+            return state;
     }
-}
+};
 
 const errors = (state = initialState.errors, action) => {
     switch (action.type) {
         case authTypes.REGISTER_FAILED:
         case authTypes.LOGIN_FAILED:
         case authTypes.LOGOUT_FAILED:
-            return { ...state, auth: action.payload }
+            return { ...state, auth: action.payload };
         case authTypes.REGISTER_SUCCESS:
         case authTypes.LOGIN_SUCCESS:
         case authTypes.LOGOUT_SUCCESS:
-            return { ...state, auth: null }
+            return { ...state, auth: null };
 
         case authTypes.EDIT_USER_FAILED:
         case chatsTypes.FETCH_ALL_CHATS_FAILED:
@@ -117,7 +117,7 @@ const errors = (state = initialState.errors, action) => {
         case chatsTypes.JOIN_CHAT_FAILED:
         case chatsTypes.LEAVE_CHAT_FAILED:
         case chatsTypes.DELETE_CHAT_FAILED:
-            return { ...state, chat: action.payload }
+            return { ...state, chat: action.payload };
         case authTypes.EDIT_USER_SUCCESS:
         case chatsTypes.FETCH_ALL_CHATS_SUCCESS:
         case chatsTypes.FETCH_MY_CHATS_SUCCESS:
@@ -126,14 +126,15 @@ const errors = (state = initialState.errors, action) => {
         case chatsTypes.JOIN_CHAT_SUCCESS:
         case chatsTypes.LEAVE_CHAT_SUCCESS:
         case chatsTypes.DELETE_CHAT_SUCCESS:
-            return { ...state, chat: null }
+            return { ...state, chat: null };
 
         default:
-            return state
+            return state;
     }
-}
+};
 
+// eslint-disable-next-line
 export const services = combineReducers({
     isFetching,
-    errors
-})
+    errors,
+});
