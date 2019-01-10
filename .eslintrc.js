@@ -8,8 +8,7 @@ module.exports = {
     ],
     "parser": "babel-eslint",
     "rules": {
-        // TODO: remove after adding prop-types
-        "react/prop-types": "off",
+        "react/prop-types": 1,
         "react/jsx-filename-extension": "off",
         "react/jsx-indent": [
             "error",

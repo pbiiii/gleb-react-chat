@@ -1,6 +1,8 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
+import UserFormInputType from '../types/UserFormInputType';
 
 const AuthForm = ({
     username, password, repeatedPassword, onChange, onSubmit, isRegisterForm,
@@ -52,5 +54,18 @@ const AuthForm = ({
         </Button>
     </form>
 );
+
+AuthForm.propTypes = {
+    username: PropTypes.shape(UserFormInputType).isRequired,
+    password: PropTypes.shape(UserFormInputType).isRequired,
+    repeatedPassword: PropTypes.shape(UserFormInputType).isRequired,
+    onChange: PropTypes.func.isRequired,
+    onSubmit: PropTypes.func.isRequired,
+    isRegisterForm: PropTypes.bool,
+};
+
+AuthForm.defaultProps = {
+    isRegisterForm: false,
+};
 
 export default AuthForm;

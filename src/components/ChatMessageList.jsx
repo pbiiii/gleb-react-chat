@@ -1,8 +1,11 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import classNames from 'classnames';
 import Typography from '@material-ui/core/Typography';
 import ChatMessage from './ChatMessage/ChatMessage';
+import ActiveUserType from '../types/ActiveUserType';
+import MessageType from '../types/MessageType';
 
 const styles = theme => ({
     messagesWrapper: {
@@ -32,6 +35,12 @@ const ChatMessageList = ({ classes, messages, activeUser }) => {
             )}
         </div>
     );
+};
+
+ChatMessageList.propTypes = {
+    classes: PropTypes.objectOf(PropTypes.string).isRequired,
+    activeUser: PropTypes.shape(ActiveUserType).isRequired,
+    messages: PropTypes.arrayOf(PropTypes.shape(MessageType)).isRequired,
 };
 
 export default withStyles(styles)(ChatMessageList);

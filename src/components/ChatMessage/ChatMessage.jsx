@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import Avatar from '@material-ui/core/Avatar';
 import Paper from '@material-ui/core/Paper';
 import classNames from 'classnames';
@@ -6,6 +7,8 @@ import Typography from '@material-ui/core/Typography';
 import moment from 'moment';
 import './ChatMessage.scss';
 import { getUserId } from 'src/store/reducer';
+import ActiveUserType from 'src/types/ActiveUserType';
+import UserType from 'src/types/UserType';
 
 const ChatMessage = ({
     sender, activeUser, content, statusMessage, createdAt,
@@ -34,6 +37,14 @@ const ChatMessage = ({
             </Paper>
         </div>
     );
+};
+
+ChatMessage.propTypes = {
+    activeUser: PropTypes.shape(ActiveUserType).isRequired,
+    sender: PropTypes.shape(UserType).isRequired,
+    content: PropTypes.string.isRequired,
+    statusMessage: PropTypes.bool.isRequired,
+    createdAt: PropTypes.string.isRequired,
 };
 
 export default ChatMessage;

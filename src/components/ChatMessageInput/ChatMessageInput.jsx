@@ -1,8 +1,10 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import Input from '@material-ui/core/Input';
 import Button from '@material-ui/core/Button';
 import Paper from '@material-ui/core/Paper';
+import ActiveUserType from 'src/types/ActiveUserType';
 
 const styles = theme => ({
     wrapper: {
@@ -23,6 +25,14 @@ const styles = theme => ({
 });
 
 class ChatMessageInput extends React.Component {
+    static propTypes = {
+        classes: PropTypes.objectOf(PropTypes.string).isRequired,
+        activeUser: PropTypes.shape(ActiveUserType).isRequired,
+        sendMessage: PropTypes.func.isRequired,
+        joinChat: PropTypes.func.isRequired,
+        disabled: PropTypes.bool.isRequired,
+    };
+
     state = {
         content: '',
     };

@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import Input from '@material-ui/core/Input';
 
@@ -19,5 +20,9 @@ const DrawerSearchInput = ({ classes }) => (
         <Input className={classes.toolbarInput} placeholder="Search chats..." />
     </div>
 );
+
+DrawerSearchInput.propTypes = {
+    classes: PropTypes.objectOf(PropTypes.string).isRequired,
+};
 
 export default withStyles(styles)(DrawerSearchInput);

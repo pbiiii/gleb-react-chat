@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import classNames from 'classnames';
@@ -8,6 +9,9 @@ import ChatDrawer from './ChatDrawer';
 import ChatMessageList from './ChatMessageList';
 import ChatMessageInput from './ChatMessageInput/ChatMessageInput';
 import ErrorMessage from './ErrorMessage';
+import ActiveUserType from '../types/ActiveUserType';
+import MessageType from '../types/MessageType';
+import ChatType from '../types/ChatType';
 
 const styles = theme => ({
     root: {
@@ -36,6 +40,39 @@ const styles = theme => ({
 });
 
 class ChatPage extends React.Component {
+    static propTypes = {
+        classes: PropTypes.objectOf(PropTypes.string).isRequired,
+        match: PropTypes.shape({
+            params: PropTypes.object.isRequired,
+        }).isRequired,
+        chats: PropTypes.shape({
+            active: PropTypes.shape(ChatType),
+            my: PropTypes.arrayOf(PropTypes.shape(ChatType)).isRequired,
+            all: PropTypes.arrayOf(PropTypes.shape(ChatType)).isRequired,
+        }).isRequired,
+        activeUser: PropTypes.shape(ActiveUserType).isRequired,
+        messages: PropTypes.arrayOf(PropTypes.shape(MessageType)).isRequired,
+        error: PropTypes.instanceOf(Error),
+        isConnected: PropTypes.bool.isRequired,
+        socketsConnect: PropTypes.func.isRequired,
+        fetchAllChats: PropTypes.func.isRequired,
+        fetchMyChats: PropTypes.func.isRequired,
+        setActiveChat: PropTypes.func.isRequired,
+        mountChat: PropTypes.func.isRequired,
+        unMountChat: PropTypes.func.isRequired,
+        createChat: PropTypes.func.isRequired,
+        joinChat: PropTypes.func.isRequired,
+        deleteChat: PropTypes.func.isRequired,
+        leaveChat: PropTypes.func.isRequired,
+        sendMessage: PropTypes.func.isRequired,
+        logout: PropTypes.func.isRequired,
+        editUser: PropTypes.func.isRequired,
+    };
+
+    static defaultProps = {
+        error: null,
+    };
+
     componentDidMount() {
         const {
             fetchAllChats,

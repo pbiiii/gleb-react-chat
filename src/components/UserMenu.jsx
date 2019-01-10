@@ -1,11 +1,19 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import IconButton from '@material-ui/core/IconButton';
 import AccountCircle from '@material-ui/icons/AccountCircle';
 import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
 import EditProfileModal from './EditProfileModal';
+import ActiveUserType from '../types/ActiveUserType';
 
 class UserMenu extends React.Component {
+    static propTypes = {
+        activeUser: PropTypes.shape(ActiveUserType).isRequired,
+        logout: PropTypes.func.isRequired,
+        editUser: PropTypes.func.isRequired,
+    };
+
     state = {
         anchorEl: null,
         modalIsOpen: false,
@@ -93,7 +101,7 @@ class UserMenu extends React.Component {
                     onClose={this.handleToggleModal}
                     onUpdateProfile={this.updateProfile}
                     onInputChange={this.onInputChange}
-                    form={editProfileForm}
+                    {...editProfileForm}
                 />
             </React.Fragment>
         );

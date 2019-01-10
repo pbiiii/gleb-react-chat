@@ -1,11 +1,13 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import Drawer from '@material-ui/core/Drawer';
 import Divider from '@material-ui/core/Divider';
 import DrawerSearchInput from './DrawerSearchInput';
 import ChatsList from './ChatsList';
-import AddChat from './AddChat';
+import AddChat from './AddChatButton';
 import DrawerBottomNavigation from './DrawerBottomNavigation';
+import ChatType from '../types/ChatType';
 
 const drawerWidth = 320;
 
@@ -33,6 +35,19 @@ const styles = theme => ({
 });
 
 class ChatDrawer extends React.Component {
+    static propTypes = {
+        classes: PropTypes.objectOf(PropTypes.string).isRequired,
+        allChats: PropTypes.arrayOf(PropTypes.shape(ChatType)).isRequired,
+        myChats: PropTypes.arrayOf(PropTypes.shape(ChatType)).isRequired,
+        activeChat: PropTypes.shape(ChatType),
+        onCreateChat: PropTypes.func.isRequired,
+        isConnected: PropTypes.bool.isRequired,
+    };
+
+    static defaultProps = {
+        activeChat: null,
+    };
+
     state = {
         activeTab: 'my',
     };

@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles/index';
 import AddIcon from '@material-ui/icons/Add';
 import Fab from '@material-ui/core/Fab';
@@ -26,7 +27,13 @@ const styles = theme => ({
     },
 });
 
-class AddChat extends React.Component {
+class AddChatButton extends React.Component {
+    static propTypes = {
+        classes: PropTypes.objectOf(PropTypes.string).isRequired,
+        onCreateChat: PropTypes.func.isRequired,
+        disabled: PropTypes.bool.isRequired,
+    };
+
     state = {
         open: false,
         title: {
@@ -96,4 +103,4 @@ class AddChat extends React.Component {
     }
 }
 
-export default withStyles(styles)(AddChat);
+export default withStyles(styles)(AddChatButton);

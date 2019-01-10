@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { withRouter, Route, Redirect } from 'react-router-dom';
@@ -16,6 +17,13 @@ const mapDispatchToProps = dispatch => bindActionCreators(
 );
 
 class PrivateRoute extends React.Component {
+    static propTypes = {
+        isAuthenticated: PropTypes.bool.isRequired,
+        // TODO: узнать какой тип писать сюда
+        // component: PropTypes..isRequired,
+        getUser: PropTypes.func.isRequired,
+    };
+
     componentDidMount() {
         // eslint-disable-next-line
         this.props.getUser();
@@ -43,8 +51,5 @@ class PrivateRoute extends React.Component {
 }
 
 export default withRouter(
-    connect(
-        mapStateToProps,
-        mapDispatchToProps,
-    )(PrivateRoute),
+    connect(mapStateToProps, mapDispatchToProps)(PrivateRoute),
 );

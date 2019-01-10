@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles/index';
 import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
@@ -6,6 +7,8 @@ import IconButton from '@material-ui/core/IconButton';
 import MoreVertIcon from '@material-ui/icons/MoreVert';
 import Avatar from '@material-ui/core/Avatar';
 import Typography from '@material-ui/core/Typography';
+import ChatType from '../types/ChatType';
+import ActiveUserType from '../types/ActiveUserType';
 
 const styles = theme => ({
     chatMenuContainer: {
@@ -20,6 +23,15 @@ const styles = theme => ({
 });
 
 class ChatMenu extends React.Component {
+    static propTypes = {
+        classes: PropTypes.objectOf(PropTypes.string).isRequired,
+        leaveChat: PropTypes.func.isRequired,
+        deleteChat: PropTypes.func.isRequired,
+        activeChat: PropTypes.shape(ChatType).isRequired,
+        activeUser: PropTypes.shape(ActiveUserType).isRequired,
+        disabled: PropTypes.bool.isRequired,
+    };
+
     state = {
         anchorEl: null,
     };
