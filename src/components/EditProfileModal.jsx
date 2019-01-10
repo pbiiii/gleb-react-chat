@@ -9,17 +9,9 @@ import Button from '@material-ui/core/es/Button/Button';
 const EditProfileMenu = ({
     isOpen, onClose, onUpdateProfile, onInputChange, form,
 }) => {
-    const {
-        firstName,
-        lastName,
-        username,
-    } = form;
+    const { firstName, lastName, username } = form;
     return (
-        <Dialog
-            open={isOpen}
-            onClose={onClose}
-            aria-labelledby="form-dialog-title"
-        >
+        <Dialog open={isOpen} onClose={onClose} aria-labelledby="form-dialog-title">
             <DialogTitle id="form-dialog-title">Edit profile</DialogTitle>
             <DialogContent>
                 <TextField

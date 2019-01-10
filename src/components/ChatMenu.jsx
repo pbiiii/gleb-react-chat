@@ -32,12 +32,7 @@ class ChatMenu extends React.Component {
 
     render() {
         const {
-            leaveChat,
-            deleteChat,
-            activeChat,
-            activeUser,
-            classes,
-            disabled,
+            leaveChat, deleteChat, activeChat, activeUser, classes, disabled,
         } = this.props;
         const { anchorEl } = this.state;
         const chatTitle = activeChat.title.substring(0, 2).toUpperCase();

@@ -78,18 +78,22 @@ export const sendMessage = content => (dispatch, getState) => {
     if (!socket) {
         dispatch(socketConnectionMissing());
     }
-    socket.emit('send-message', {
-        chatId: activeChatId,
-        content,
-    }, () => {
-        dispatch({
-            type: types.SEND_MESSAGE,
-            payload: {
-                chatId: activeChatId,
-                content,
-            },
-        });
-    });
+    socket.emit(
+        'send-message',
+        {
+            chatId: activeChatId,
+            content,
+        },
+        () => {
+            dispatch({
+                type: types.SEND_MESSAGE,
+                payload: {
+                    chatId: activeChatId,
+                    content,
+                },
+            });
+        },
+    );
 };
 
 export const mountChat = chatId => (dispatch) => {

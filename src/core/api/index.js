@@ -17,7 +17,6 @@ const onResponseFulfilled = (config) => {
     return config;
 };
 
-
 const onResponseRejected = (error) => {
     const { status } = error.response;
     if (status === 403) {
@@ -26,9 +25,6 @@ const onResponseRejected = (error) => {
     return Promise.reject(error);
 };
 
-client.interceptors.request.use(
-    onResponseFulfilled,
-    onResponseRejected,
-);
+client.interceptors.request.use(onResponseFulfilled, onResponseRejected);
 
 export default client;

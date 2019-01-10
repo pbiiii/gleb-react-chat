@@ -8,7 +8,6 @@ import Typography from '@material-ui/core/Typography';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 
-
 const styles = theme => ({
     fab: {
         right: '24px',
@@ -34,28 +33,28 @@ class AddChat extends React.Component {
             value: '',
             valid: true,
         },
-    }
+    };
 
     toggleModal = () => {
         const { open } = this.state;
         this.setState({
             open: !open,
         });
-    }
+    };
 
     onTitleChange = (event) => {
         const { value } = event.target;
         this.setState({
             title: { value },
         });
-    }
+    };
 
     handleCreateClick = () => {
         const { onCreateChat } = this.props;
         const { title } = this.state;
         onCreateChat(title.value);
         this.toggleModal();
-    }
+    };
 
     render() {
         const { classes, disabled } = this.props;

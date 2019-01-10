@@ -19,31 +19,17 @@ const styles = theme => ({
     },
 });
 
-const ChatMessageList = ({
-    classes,
-    messages,
-    activeUser,
-}) => {
+const ChatMessageList = ({ classes, messages, activeUser }) => {
     const messagesExists = messages && messages.length > 0;
     return (
-        <div
-            className={classNames(classes.messagesWrapper, !messagesExists && classes.noMessages)}
-        >
-            {
-                messagesExists ? (
-                    messages.map(message => (
-                        <ChatMessage
-                            key={message._id}
-                            activeUser={activeUser}
-                            {...message}
-                        />
-                    ))
-                ) : (
-                    <Typography variant="h5">
-                        There is no messages yet
-                    </Typography>
-                )
-            }
+        <div className={classNames(classes.messagesWrapper, !messagesExists && classes.noMessages)}>
+            {messagesExists ? (
+                messages.map(message => (
+                    <ChatMessage key={message._id} activeUser={activeUser} {...message} />
+                ))
+            ) : (
+                <Typography variant="h5">There is no messages yet</Typography>
+            )}
         </div>
     );
 };

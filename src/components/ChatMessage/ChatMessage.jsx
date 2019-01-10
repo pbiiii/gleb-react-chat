@@ -17,15 +17,9 @@ const ChatMessage = ({
         return (
             <div className={classNames('status-message-wrapper')}>
                 <Typography className="message">
-                    <Typography variant="caption">
-                        {username}
-                    </Typography>
-                    <Typography variant="body1">
-                        {content}
-                    </Typography>
-                    <Typography variant="caption">
-                        {moment(createdAt).fromNow()}
-                    </Typography>
+                    <Typography variant="caption">{username}</Typography>
+                    <Typography variant="body1">{content}</Typography>
+                    <Typography variant="caption">{moment(createdAt).fromNow()}</Typography>
                 </Typography>
             </div>
         );
@@ -34,15 +28,9 @@ const ChatMessage = ({
         <div className={classNames('message-wrapper', messageFromMe && 'from-me')}>
             <Avatar>{avatarTitle}</Avatar>
             <Paper button="true" className="message">
-                <Typography variant="caption">
-                    {username}
-                </Typography>
-                <Typography variant="body1">
-                    {content}
-                </Typography>
-                <Typography variant="caption">
-                    {moment(createdAt).fromNow()}
-                </Typography>
+                <Typography variant="caption">{username}</Typography>
+                <Typography variant="body1">{content}</Typography>
+                <Typography variant="caption">{moment(createdAt).fromNow()}</Typography>
             </Paper>
         </div>
     );

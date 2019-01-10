@@ -60,7 +60,9 @@ class AuthPage extends React.Component {
 
     handleRegisterSubmit = (event) => {
         event.preventDefault();
-        const { form: { username, password } } = this.state;
+        const {
+            form: { username, password },
+        } = this.state;
         const { register } = this.props;
         register({
             username: username.value,
@@ -70,7 +72,9 @@ class AuthPage extends React.Component {
 
     handleLoginSubmit = (event) => {
         event.preventDefault();
-        const { form: { username, password } } = this.state;
+        const {
+            form: { username, password },
+        } = this.state;
         const { login } = this.props;
         login({
             username: username.value,
@@ -79,9 +83,7 @@ class AuthPage extends React.Component {
     };
 
     render() {
-        const {
-            classes, isAuthenticated, error,
-        } = this.props;
+        const { classes, isAuthenticated, error } = this.props;
 
         const { activeTab, form } = this.state;
 

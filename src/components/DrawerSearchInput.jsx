@@ -16,10 +16,7 @@ const styles = theme => ({
 
 const DrawerSearchInput = ({ classes }) => (
     <div className={classes.toolbar}>
-        <Input
-            className={classes.toolbarInput}
-            placeholder="Search chats..."
-        />
+        <Input className={classes.toolbarInput} placeholder="Search chats..." />
     </div>
 );
 

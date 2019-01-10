@@ -56,13 +56,13 @@ class UserMenu extends React.Component {
         const { editProfileForm } = this.state;
         editUser({ ...editProfileForm });
         this.handleToggleModal();
-    }
+    };
 
     handleLogout = () => {
         const { logout } = this.props;
         logout();
         this.closeMenu();
-    }
+    };
 
     render() {
         const {
@@ -85,16 +85,8 @@ class UserMenu extends React.Component {
                     open={Boolean(anchorEl)}
                     onClose={this.closeMenu}
                 >
-                    <MenuItem
-                        onClick={this.handleToggleModal}
-                    >
-                        Edit Profile
-                    </MenuItem>
-                    <MenuItem
-                        onClick={this.handleLogout}
-                    >
-                        Logout
-                    </MenuItem>
+                    <MenuItem onClick={this.handleToggleModal}>Edit Profile</MenuItem>
+                    <MenuItem onClick={this.handleLogout}>Logout</MenuItem>
                 </Menu>
                 <EditProfileModal
                     isOpen={modalIsOpen}

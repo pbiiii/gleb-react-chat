@@ -6,11 +6,7 @@ import { Link } from 'react-router-dom';
 import moment from 'moment';
 
 const ChatItem = ({ chat, active, disabled }) => {
-    const {
-        _id: chatId,
-        title,
-        createdAt,
-    } = chat;
+    const { _id: chatId, title, createdAt } = chat;
     const avatarTitle = title.substring(0, 2).toUpperCase();
     return (
         <ListItem

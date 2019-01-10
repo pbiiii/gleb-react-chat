@@ -3,12 +3,7 @@ import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 
 const AuthForm = ({
-    username,
-    password,
-    repeatedPassword,
-    onChange,
-    onSubmit,
-    isRegisterForm,
+    username, password, repeatedPassword, onChange, onSubmit, isRegisterForm,
 }) => (
     <form onSubmit={onSubmit}>
         <TextField
@@ -37,8 +32,7 @@ const AuthForm = ({
             onChange={onChange}
             error={!password.isValid}
         />
-        { isRegisterForm
-        && (
+        {isRegisterForm && (
             <TextField
                 required
                 fullWidth
@@ -52,18 +46,9 @@ const AuthForm = ({
                 onChange={onChange}
                 error={!repeatedPassword.isValid}
             />
-        )
-        }
-        <Button
-            fullWidth
-            variant="contained"
-            type="submit"
-            color="primary"
-        >
-            { isRegisterForm
-                ? 'Register'
-                : 'Login'
-            }
+        )}
+        <Button fullWidth variant="contained" type="submit" color="primary">
+            {isRegisterForm ? 'Register' : 'Login'}
         </Button>
     </form>
 );

@@ -17,4 +17,7 @@ const mapDispatchToProps = dispatch => bindActionCreators(
     dispatch,
 );
 
-export default connect(mapStateToProps, mapDispatchToProps)(AuthPage);
+export default connect(
+    mapStateToProps,
+    mapDispatchToProps,
+)(AuthPage);

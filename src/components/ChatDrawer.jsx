@@ -46,12 +46,7 @@ class ChatDrawer extends React.Component {
 
     render() {
         const {
-            classes,
-            allChats,
-            myChats,
-            onCreateChat,
-            activeChat,
-            isConnected,
+            classes, allChats, myChats, onCreateChat, activeChat, isConnected,
         } = this.props;
         const { activeTab } = this.state;
         return (
@@ -70,14 +65,8 @@ class ChatDrawer extends React.Component {
                     activeChat={activeChat}
                     chats={activeTab === 'my' ? myChats : allChats}
                 />
-                <AddChat
-                    onCreateChat={onCreateChat}
-                    disabled={!isConnected}
-                />
-                <DrawerBottomNavigation
-                    activeTab={activeTab}
-                    onTabChange={this.onTabChange}
-                />
+                <AddChat onCreateChat={onCreateChat} disabled={!isConnected} />
+                <DrawerBottomNavigation activeTab={activeTab} onTabChange={this.onTabChange} />
             </Drawer>
         );
     }

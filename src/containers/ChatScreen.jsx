@@ -40,20 +40,26 @@ const mapStateToProps = (state) => {
     };
 };
 
-const mapDispatchToProps = dispatch => bindActionCreators({
-    socketsConnect,
-    fetchAllChats,
-    fetchMyChats,
-    setActiveChat,
-    mountChat,
-    unMountChat,
-    createChat,
-    joinChat,
-    deleteChat,
-    leaveChat,
-    sendMessage,
-    logout,
-    editUser,
-}, dispatch);
+const mapDispatchToProps = dispatch => bindActionCreators(
+    {
+        socketsConnect,
+        fetchAllChats,
+        fetchMyChats,
+        setActiveChat,
+        mountChat,
+        unMountChat,
+        createChat,
+        joinChat,
+        deleteChat,
+        leaveChat,
+        sendMessage,
+        logout,
+        editUser,
+    },
+    dispatch,
+);
 
-export default connect(mapStateToProps, mapDispatchToProps)(ChatPage);
+export default connect(
+    mapStateToProps,
+    mapDispatchToProps,
+)(ChatPage);

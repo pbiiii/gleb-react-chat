@@ -17,23 +17,18 @@ const styles = () => ({
 const ChatsList = ({
     chats, classes, activeChat, disabled,
 }) => (
-    <List
-        className={classes.list}
-    >
+    <List className={classes.list}>
         {chats && chats.length > 0 ? (
             chats.map(chat => (
                 <ChatItem
                     disabled={disabled}
                     chat={chat}
                     key={chat._id}
-                    active={activeChat && (activeChat._id === chat._id)}
+                    active={activeChat && activeChat._id === chat._id}
                 />
             ))
         ) : (
-            <Typography
-                variant="body1"
-                className={classes.subtitle}
-            >
+            <Typography variant="body1" className={classes.subtitle}>
                 There is no chats yet...
             </Typography>
         )}

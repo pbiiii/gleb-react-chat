@@ -4,7 +4,6 @@ import Input from '@material-ui/core/Input';
 import Button from '@material-ui/core/Button';
 import Paper from '@material-ui/core/Paper';
 
-
 const styles = theme => ({
     wrapper: {
         position: 'fixed',
@@ -26,7 +25,7 @@ const styles = theme => ({
 class ChatMessageInput extends React.Component {
     state = {
         content: '',
-    }
+    };
 
     onMessageChange = event => this.setState({ content: event.target.value });
 
@@ -42,41 +41,34 @@ class ChatMessageInput extends React.Component {
     render() {
         const { content } = this.state;
         const {
-            classes,
-            activeUser,
-            joinChat,
-            disabled,
+            classes, activeUser, joinChat, disabled,
         } = this.props;
         const showJoinButton = !activeUser.isChatMember;
         return (
-            <div
-                className={classes.wrapper}
-            >
+            <div className={classes.wrapper}>
                 <Paper className={classes.inputWrapper}>
-                    {
-                        showJoinButton ? (
-                            <Button
-                                fullWidth
-                                variant="contained"
-                                color="primary"
-                                disabled={disabled}
-                                onClick={joinChat}
-                                className={classes.button}
-                            >
-                                Join
-                            </Button>
-                        ) : (
-                            <Input
-                                fullWidth
-                                placeholder="Type your message…"
-                                disabled={disabled}
-                                value={content}
-                                onChange={this.onMessageChange}
-                                onKeyPress={this.onKeyPress}
-                                className={classes.input}
-                            />
-                        )
-                    }
+                    {showJoinButton ? (
+                        <Button
+                            fullWidth
+                            variant="contained"
+                            color="primary"
+                            disabled={disabled}
+                            onClick={joinChat}
+                            className={classes.button}
+                        >
+                            Join
+                        </Button>
+                    ) : (
+                        <Input
+                            fullWidth
+                            placeholder="Type your message…"
+                            disabled={disabled}
+                            value={content}
+                            onChange={this.onMessageChange}
+                            onKeyPress={this.onKeyPress}
+                            className={classes.input}
+                        />
+                    )}
                 </Paper>
             </div>
         );

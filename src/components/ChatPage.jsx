@@ -45,27 +45,29 @@ class ChatPage extends React.Component {
             setActiveChat,
             mountChat,
         } = this.props;
-        Promise.all([
-            fetchAllChats(),
-            fetchMyChats(),
-        ]).then(() => {
-            socketsConnect();
-        }).then(() => {
-            const { chatId } = match.params;
-            if (chatId) {
-                setActiveChat(chatId);
-                mountChat(chatId);
-            }
-        });
+        Promise.all([fetchAllChats(), fetchMyChats()])
+            .then(() => {
+                socketsConnect();
+            })
+            .then(() => {
+                const { chatId } = match.params;
+                if (chatId) {
+                    setActiveChat(chatId);
+                    mountChat(chatId);
+                }
+            });
     }
 
     componentWillReceiveProps(nextProps) {
         const {
-            match: { params }, setActiveChat, mountChat, unMountChat,
+            match: { params },
+            setActiveChat,
+            mountChat,
+            unMountChat,
         } = this.props;
         const { params: nextParams } = nextProps.match;
 
-        if (nextParams.chatId && (params.chatId !== nextParams.chatId)) {
+        if (nextParams.chatId && params.chatId !== nextParams.chatId) {
             setActiveChat(nextParams.chatId);
             unMountChat(params.chatId);
             mountChat(nextParams.chatId);
@@ -108,15 +110,10 @@ class ChatPage extends React.Component {
                     onCreateChat={createChat}
                     isConnected={isConnected}
                 />
-                <main
-                    className={classNames(classes.content, !activeChat && classes.noActiveChat)}
-                >
+                <main className={classNames(classes.content, !activeChat && classes.noActiveChat)}>
                     {activeChat && (
                         <React.Fragment>
-                            <ChatMessageList
-                                messages={messages}
-                                activeUser={activeUser}
-                            />
+                            <ChatMessageList messages={messages} activeUser={activeUser} />
                             <ChatMessageInput
                                 sendMessage={sendMessage}
                                 joinChat={() => joinChat({ chat: activeChat })}
@@ -126,9 +123,7 @@ class ChatPage extends React.Component {
                         </React.Fragment>
                     )}
                     {!activeChat && (
-                        <Typography variant="h5">
-                            Please select or create chat
-                        </Typography>
+                        <Typography variant="h5">Please select or create chat</Typography>
                     )}
                 </main>
                 <ErrorMessage error={error} />

@@ -42,4 +42,9 @@ class PrivateRoute extends React.Component {
     }
 }
 
-export default withRouter(connect(mapStateToProps, mapDispatchToProps)(PrivateRoute));
+export default withRouter(
+    connect(
+        mapStateToProps,
+        mapDispatchToProps,
+    )(PrivateRoute),
+);
