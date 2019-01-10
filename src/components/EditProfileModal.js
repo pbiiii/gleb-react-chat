@@ -1,11 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Dialog from '@material-ui/core/Dialog';
-import DialogTitle from '@material-ui/core/es/DialogTitle/DialogTitle';
-import DialogContent from '@material-ui/core/es/DialogContent/DialogContent';
-import TextField from '@material-ui/core/es/TextField/TextField';
-import DialogActions from '@material-ui/core/es/DialogActions/DialogActions';
-import Button from '@material-ui/core/es/Button/Button';
+import DialogTitle from '@material-ui/core/DialogTitle';
+import DialogContent from '@material-ui/core/DialogContent';
+import TextField from '@material-ui/core/TextField';
+import DialogActions from '@material-ui/core/DialogActions';
+import Button from '@material-ui/core/Button';
 
 const EditProfileMenu = ({
     isOpen, onClose, onUpdateProfile, onInputChange, firstName, lastName, username,

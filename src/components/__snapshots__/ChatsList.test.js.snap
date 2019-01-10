@@ -1,0 +1,9 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`render correctly 1`] = `
+<ul
+  className="MuiList-root-9 MuiList-padding-10 ChatsList-list-8"
+>
+  ChatItem
+</ul>
+`;

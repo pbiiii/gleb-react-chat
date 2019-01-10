@@ -1,7 +1,7 @@
 /* eslint no-use-before-define: 0 */
 import { combineReducers } from 'redux';
-import * as authTypes from 'src/store/auth/actions/actionTypes';
-import * as socketsTypes from 'src/store/sockets/actions/actionTypes';
+import * as authTypes from '../../auth/actions/actionTypes';
+import * as socketsTypes from '../../sockets/actions/actionTypes';
 import * as types from '../actions/actionTypes';
 
 const initialState = {

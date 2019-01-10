@@ -1,0 +1,101 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`render correctly 1`] = `
+<form
+  onSubmit={[Function]}
+>
+  <div
+    className="MuiFormControl-root-89 MuiFormControl-marginNormal-90 MuiFormControl-fullWidth-92"
+  >
+    <label
+      className="MuiFormLabel-root-104 MuiFormLabel-error-107 MuiInputLabel-error-96 MuiFormLabel-filled-108 MuiFormLabel-required-109 MuiInputLabel-required-97 MuiInputLabel-root-93 MuiInputLabel-formControl-98 MuiInputLabel-animated-101 MuiInputLabel-shrink-100"
+      data-shrink={true}
+    >
+      Username
+      <span
+        className="MuiFormLabel-asterisk-110 MuiFormLabel-error-107 MuiInputLabel-error-96"
+      >
+         *
+      </span>
+    </label>
+    <div
+      className="MuiInputBase-root-124 MuiInput-root-111 MuiInput-underline-115 MuiInputBase-error-130 MuiInput-error-116 MuiInputBase-fullWidth-133 MuiInput-fullWidth-118 MuiInputBase-formControl-125 MuiInput-formControl-112"
+      onClick={[Function]}
+    >
+      <input
+        aria-invalid={true}
+        autoComplete="username"
+        className="MuiInputBase-input-134 MuiInput-input-119"
+        disabled={false}
+        name="username"
+        onBlur={[Function]}
+        onChange={[Function]}
+        onFocus={[Function]}
+        placeholder="Type your username..."
+        required={true}
+        type="text"
+        value="username"
+      />
+    </div>
+  </div>
+  <div
+    className="MuiFormControl-root-89 MuiFormControl-marginNormal-90 MuiFormControl-fullWidth-92"
+  >
+    <label
+      className="MuiFormLabel-root-104 MuiFormLabel-error-107 MuiInputLabel-error-96 MuiFormLabel-filled-108 MuiFormLabel-required-109 MuiInputLabel-required-97 MuiInputLabel-root-93 MuiInputLabel-formControl-98 MuiInputLabel-animated-101 MuiInputLabel-shrink-100"
+      data-shrink={true}
+    >
+      Password
+      <span
+        className="MuiFormLabel-asterisk-110 MuiFormLabel-error-107 MuiInputLabel-error-96"
+      >
+         *
+      </span>
+    </label>
+    <div
+      className="MuiInputBase-root-124 MuiInput-root-111 MuiInput-underline-115 MuiInputBase-error-130 MuiInput-error-116 MuiInputBase-fullWidth-133 MuiInput-fullWidth-118 MuiInputBase-formControl-125 MuiInput-formControl-112"
+      onClick={[Function]}
+    >
+      <input
+        aria-invalid={true}
+        autoComplete="current-password"
+        className="MuiInputBase-input-134 MuiInput-input-119 MuiInputBase-inputType-137 MuiInput-inputType-122"
+        disabled={false}
+        name="password"
+        onBlur={[Function]}
+        onChange={[Function]}
+        onFocus={[Function]}
+        placeholder="Type your password..."
+        required={true}
+        type="password"
+        value="password"
+      />
+    </div>
+  </div>
+  <button
+    className="MuiButtonBase-root-167 MuiButton-root-141 MuiButton-contained-152 MuiButton-containedPrimary-153 MuiButton-raised-155 MuiButton-raisedPrimary-156 MuiButton-fullWidth-166"
+    disabled={false}
+    onBlur={[Function]}
+    onFocus={[Function]}
+    onKeyDown={[Function]}
+    onKeyUp={[Function]}
+    onMouseDown={[Function]}
+    onMouseLeave={[Function]}
+    onMouseUp={[Function]}
+    onTouchEnd={[Function]}
+    onTouchMove={[Function]}
+    onTouchStart={[Function]}
+    tabIndex="0"
+    type="submit"
+  >
+    <span
+      className="MuiButton-label-142"
+    >
+      Login
+    </span>
+    <span
+      className="MuiTouchRipple-root-170"
+    />
+  </button>
+</form>
+`;

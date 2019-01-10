@@ -1,0 +1,60 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`render correctly 1`] = `
+<div
+  className="ChatMenu-chatMenuContainer-70"
+>
+  <div
+    className="MuiAvatar-root-72 MuiAvatar-colorDefault-73"
+  >
+    MO
+  </div>
+  <h2
+    className="MuiTypography-root-75 MuiTypography-title-81 ChatMenu-chatMenuTitle-71"
+  >
+    Mock title
+  </h2>
+  <button
+    aria-haspopup="true"
+    aria-owns={null}
+    className="MuiButtonBase-root-116 MuiIconButton-root-110 MuiIconButton-colorInherit-111"
+    disabled={false}
+    onBlur={[Function]}
+    onClick={[Function]}
+    onFocus={[Function]}
+    onKeyDown={[Function]}
+    onKeyUp={[Function]}
+    onMouseDown={[Function]}
+    onMouseLeave={[Function]}
+    onMouseUp={[Function]}
+    onTouchEnd={[Function]}
+    onTouchMove={[Function]}
+    onTouchStart={[Function]}
+    tabIndex="0"
+    type="button"
+  >
+    <span
+      className="MuiIconButton-label-115"
+    >
+      <svg
+        aria-hidden="true"
+        className="MuiSvgIcon-root-119"
+        focusable="false"
+        role="presentation"
+        viewBox="0 0 24 24"
+      >
+        <path
+          d="M0 0h24v24H0z"
+          fill="none"
+        />
+        <path
+          d="M12 8c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zm0 2c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm0 6c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z"
+        />
+      </svg>
+    </span>
+    <span
+      className="MuiTouchRipple-root-132"
+    />
+  </button>
+</div>
+`;

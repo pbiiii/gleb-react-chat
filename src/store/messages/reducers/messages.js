@@ -1,5 +1,5 @@
-import * as types from 'src/store/chats/actions/actionTypes';
-import * as socketsTypes from 'src/store/sockets/actions/actionTypes';
+import * as types from '../../chats/actions/actionTypes';
+import * as socketsTypes from '../../sockets/actions/actionTypes';
 
 const initialState = [];
 

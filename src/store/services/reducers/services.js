@@ -1,7 +1,7 @@
 import { combineReducers } from 'redux';
-import * as authTypes from 'src/store/auth/actions/actionTypes';
-import * as chatsTypes from 'src/store/chats/actions/actionTypes';
-import * as socketsTypes from 'src/store/sockets/actions/actionTypes';
+import * as authTypes from '../../auth/actions/actionTypes';
+import * as chatsTypes from '../../chats/actions/actionTypes';
+import * as socketsTypes from '../../sockets/actions/actionTypes';
 
 const initialState = {
     isFetching: {

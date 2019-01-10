@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import List from '@material-ui/core/List';
 import { withStyles } from '@material-ui/core/styles/index';
-import { Typography } from '@material-ui/core';
+import Typography from '@material-ui/core/Typography';
 import ChatItem from './ChatItem';
 import ChatType from '../types/ChatType';
 

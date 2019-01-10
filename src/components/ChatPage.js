@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import classNames from 'classnames';
-import { Typography } from '@material-ui/core/es/index';
+import Typography from '@material-ui/core/Typography';
 import AppTopBar from './AppTopBar';
 import ChatDrawer from './ChatDrawer';
 import ChatMessageList from './ChatMessageList';

@@ -1,0 +1,245 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`render correctly 1`] = `
+Array [
+  <header
+    className="MuiPaper-root-298 MuiPaper-elevation4-304 MuiAppBar-root-289 MuiAppBar-positionFixed-290 MuiAppBar-colorPrimary-296 mui-fixed"
+  >
+    <div
+      className="MuiToolbar-root-325 MuiToolbar-regular-327 MuiToolbar-gutters-326"
+    >
+      <h2
+        className="MuiTypography-root-329 MuiTypography-title-335 MuiTypography-colorInherit-358"
+        style={
+          Object {
+            "flex": 1,
+          }
+        }
+      >
+        Gleb React Chat
+      </h2>
+    </div>
+  </header>,
+  <div
+    className="MuiGrid-container-364 MuiGrid-justify-xs-center-381"
+  >
+    <div
+      className="MuiGrid-item-365"
+    >
+      <div
+        className="MuiPaper-root-298 MuiPaper-elevation2-302 MuiPaper-rounded-299 AuthPage-paper-287"
+      >
+        <header
+          className="MuiPaper-root-298 MuiPaper-elevation4-304 MuiAppBar-root-289 MuiAppBar-positionStatic-293 MuiAppBar-colorDefault-295"
+        >
+          <div
+            className="MuiTabs-root-461"
+          >
+            <div
+              className="MuiTabs-flexContainer-462"
+            >
+              <div
+                className="MuiTabs-scroller-464 MuiTabs-fixed-465"
+                onScroll={[Function]}
+                role="tablist"
+                style={
+                  Object {
+                    "marginBottom": 0,
+                  }
+                }
+              >
+                <div
+                  className="MuiTabs-flexContainer-462"
+                >
+                  <button
+                    aria-selected={true}
+                    className="MuiButtonBase-root-482 MuiTab-root-470 MuiTab-textColorInherit-472 MuiTab-selected-475 MuiTab-fullWidth-477"
+                    disabled={false}
+                    onBlur={[Function]}
+                    onClick={[Function]}
+                    onFocus={[Function]}
+                    onKeyDown={[Function]}
+                    onKeyUp={[Function]}
+                    onMouseDown={[Function]}
+                    onMouseLeave={[Function]}
+                    onMouseUp={[Function]}
+                    onTouchEnd={[Function]}
+                    onTouchMove={[Function]}
+                    onTouchStart={[Function]}
+                    role="tab"
+                    tabIndex="0"
+                    type="button"
+                  >
+                    <span
+                      className="MuiTab-wrapper-478"
+                    >
+                      <span
+                        className="MuiTab-labelContainer-479"
+                      >
+                        <span
+                          className="MuiTab-label-480"
+                        >
+                          Login
+                        </span>
+                      </span>
+                    </span>
+                    <span
+                      className="MuiTouchRipple-root-566"
+                    />
+                  </button>
+                  <button
+                    aria-selected={false}
+                    className="MuiButtonBase-root-482 MuiTab-root-470 MuiTab-textColorInherit-472 MuiTab-fullWidth-477"
+                    disabled={false}
+                    onBlur={[Function]}
+                    onClick={[Function]}
+                    onFocus={[Function]}
+                    onKeyDown={[Function]}
+                    onKeyUp={[Function]}
+                    onMouseDown={[Function]}
+                    onMouseLeave={[Function]}
+                    onMouseUp={[Function]}
+                    onTouchEnd={[Function]}
+                    onTouchMove={[Function]}
+                    onTouchStart={[Function]}
+                    role="tab"
+                    tabIndex="0"
+                    type="button"
+                  >
+                    <span
+                      className="MuiTab-wrapper-478"
+                    >
+                      <span
+                        className="MuiTab-labelContainer-479"
+                      >
+                        <span
+                          className="MuiTab-label-480"
+                        >
+                          Register
+                        </span>
+                      </span>
+                    </span>
+                    <span
+                      className="MuiTouchRipple-root-566"
+                    />
+                  </button>
+                </div>
+                <span
+                  className="MuiPrivateTabIndicator-root-485 MuiPrivateTabIndicator-colorSecondary-487 MuiTabs-indicator-469"
+                  style={
+                    Object {
+                      "left": 0,
+                      "width": 0,
+                    }
+                  }
+                />
+              </div>
+            </div>
+          </div>
+        </header>
+        <div
+          className="AuthPage-tabContent-288"
+        >
+          <form
+            onSubmit={[Function]}
+          >
+            <div
+              className="MuiFormControl-root-488 MuiFormControl-marginNormal-489 MuiFormControl-fullWidth-491"
+            >
+              <label
+                className="MuiFormLabel-root-503 MuiFormLabel-required-508 MuiInputLabel-required-496 MuiInputLabel-root-492 MuiInputLabel-formControl-497 MuiInputLabel-animated-500"
+                data-shrink={false}
+              >
+                Username
+                <span
+                  className="MuiFormLabel-asterisk-509"
+                >
+                   *
+                </span>
+              </label>
+              <div
+                className="MuiInputBase-root-523 MuiInput-root-510 MuiInput-underline-514 MuiInputBase-fullWidth-532 MuiInput-fullWidth-517 MuiInputBase-formControl-524 MuiInput-formControl-511"
+                onClick={[Function]}
+              >
+                <input
+                  aria-invalid={false}
+                  autoComplete="username"
+                  className="MuiInputBase-input-533 MuiInput-input-518"
+                  disabled={false}
+                  name="username"
+                  onBlur={[Function]}
+                  onChange={[Function]}
+                  onFocus={[Function]}
+                  placeholder="Type your username..."
+                  required={true}
+                  type="text"
+                  value=""
+                />
+              </div>
+            </div>
+            <div
+              className="MuiFormControl-root-488 MuiFormControl-marginNormal-489 MuiFormControl-fullWidth-491"
+            >
+              <label
+                className="MuiFormLabel-root-503 MuiFormLabel-required-508 MuiInputLabel-required-496 MuiInputLabel-root-492 MuiInputLabel-formControl-497 MuiInputLabel-animated-500"
+                data-shrink={false}
+              >
+                Password
+                <span
+                  className="MuiFormLabel-asterisk-509"
+                >
+                   *
+                </span>
+              </label>
+              <div
+                className="MuiInputBase-root-523 MuiInput-root-510 MuiInput-underline-514 MuiInputBase-fullWidth-532 MuiInput-fullWidth-517 MuiInputBase-formControl-524 MuiInput-formControl-511"
+                onClick={[Function]}
+              >
+                <input
+                  aria-invalid={false}
+                  autoComplete="current-password"
+                  className="MuiInputBase-input-533 MuiInput-input-518 MuiInputBase-inputType-536 MuiInput-inputType-521"
+                  disabled={false}
+                  name="password"
+                  onBlur={[Function]}
+                  onChange={[Function]}
+                  onFocus={[Function]}
+                  placeholder="Type your password..."
+                  required={true}
+                  type="password"
+                  value=""
+                />
+              </div>
+            </div>
+            <button
+              className="MuiButtonBase-root-482 MuiButton-root-540 MuiButton-contained-551 MuiButton-containedPrimary-552 MuiButton-raised-554 MuiButton-raisedPrimary-555 MuiButton-fullWidth-565"
+              disabled={false}
+              onBlur={[Function]}
+              onFocus={[Function]}
+              onKeyDown={[Function]}
+              onKeyUp={[Function]}
+              onMouseDown={[Function]}
+              onMouseLeave={[Function]}
+              onMouseUp={[Function]}
+              onTouchEnd={[Function]}
+              onTouchMove={[Function]}
+              onTouchStart={[Function]}
+              tabIndex="0"
+              type="submit"
+            >
+              <span
+                className="MuiButton-label-541"
+              >
+                Login
+              </span>
+              <span
+                className="MuiTouchRipple-root-566"
+              />
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>,
+]
+`;

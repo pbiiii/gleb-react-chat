@@ -6,9 +6,9 @@ import classNames from 'classnames';
 import Typography from '@material-ui/core/Typography';
 import moment from 'moment';
 import './ChatMessage.scss';
-import { getUserId } from 'src/store/reducer';
-import ActiveUserType from 'src/types/ActiveUserType';
-import UserType from 'src/types/UserType';
+import { getUserId } from '../../store/reducer';
+import ActiveUserType from '../../types/ActiveUserType';
+import UserType from '../../types/UserType';
 
 const ChatMessage = ({
     sender, activeUser, content, statusMessage, createdAt,

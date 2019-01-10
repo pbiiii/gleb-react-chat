@@ -1,4 +1,4 @@
-import client from 'src/core/api';
+import client from '../../../core/api';
 import * as types from './actionTypes';
 
 export const register = ({ username, password }) => (dispatch, getState) => {
