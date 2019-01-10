@@ -2,6 +2,7 @@ import SocketIOClient from 'socket.io-client';
 import { redirect } from '../../services/actions';
 import { getChatId } from '../../chats/reducers/chats';
 import * as types from './actionTypes';
+import config from '../../../core/config';
 
 let socket = null;
 
@@ -23,7 +24,7 @@ export const socketsConnect = () => (dispatch, getState) => {
         type: types.SOCKETS_CONNECTION_REQUEST,
     });
 
-    socket = SocketIOClient('ws://localhost:9000', {
+    socket = SocketIOClient(config.SOCKETS_URL, {
         query: { token },
     });
 

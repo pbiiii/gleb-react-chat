@@ -83,7 +83,8 @@
     "lint": "eslint 'src/**/*.{js,json,jsx}'",
     "lint:fix": "yarn lint --fix",
     "format": "prettier-eslint --write 'src/**/*.{js,json,jsx}'",
-    "pre-commit": "lint-staged"
+    "pre-commit": "lint-staged",
+    "prepush": "yarn test"
   },
   "eslintConfig": {
     "extends": "react-app"
