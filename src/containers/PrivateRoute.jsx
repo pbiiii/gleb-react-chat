@@ -39,7 +39,7 @@ class PrivateRoute extends React.Component {
                 ) : (
                     <Redirect
                         to={{
-                            pathname: '/auth',
+                            pathname: '/',
                             state: { from: props.location },
                         }}
                     />
