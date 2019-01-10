@@ -9,7 +9,7 @@ export default () => (
     <Router history={history}>
         <div>
             <Switch>
-                <Route path="/auth" exact component={AuthScreen} />
+                <Route path="/" exact component={AuthScreen} />
                 <PrivateRoute path="/chat/:chatId?" component={ChatScreen} />
             </Switch>
         </div>
