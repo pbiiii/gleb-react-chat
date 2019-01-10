@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { withRouter, Route, Redirect } from 'react-router-dom';
-import { getUser } from 'src/store/auth/actions';
+import { getUser } from '../store/auth/actions';
 
 const mapStateToProps = state => ({
     isAuthenticated: state.user.isAuthenticated,

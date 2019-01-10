@@ -2,9 +2,6 @@ import React from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import {
-    mountChat, unMountChat, sendMessage, socketsConnect,
-} from 'src/store/sockets/actions';
-import {
     fetchAllChats,
     fetchMyChats,
     setActiveChat,
@@ -12,10 +9,13 @@ import {
     deleteChat,
     joinChat,
     leaveChat,
-} from 'src/store/chats/actions';
-import { logout, editUser } from 'src/store/auth/actions';
-import * as fromChats from 'src/store/chats/reducers/chats';
-import * as fromState from 'src/store/reducer';
+} from '../store/chats/actions';
+import { logout, editUser } from '../store/auth/actions';
+import * as fromChats from '../store/chats/reducers/chats';
+import * as fromState from '../store/reducer';
+import {
+    mountChat, unMountChat, sendMessage, socketsConnect,
+} from '../store/sockets/actions';
 import ChatPage from '../components/ChatPage';
 
 const mapStateToProps = (state) => {

@@ -1,4 +1,4 @@
-import history from 'src/utils/history';
+import history from '../../../utils/history';
 import * as types from './actionTypes';
 
 // eslint-disable-next-line

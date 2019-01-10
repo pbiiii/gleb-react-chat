@@ -1,5 +1,5 @@
-import client from 'src/core/api';
-import { redirect } from 'src/store/services/actions';
+import client from '../../../core/api';
+import { redirect } from '../../services/actions';
 import * as types from './actionTypes';
 
 export const fetchAllChats = () => (dispatch, getState) => {

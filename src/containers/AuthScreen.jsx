@@ -1,7 +1,7 @@
 import React from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import { register, login } from 'src/store/auth/actions';
+import { register, login } from '../store/auth/actions';
 import AuthPage from '../components/AuthPage';
 
 const mapStateToProps = state => ({

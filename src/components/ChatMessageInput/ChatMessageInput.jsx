@@ -4,7 +4,7 @@ import { withStyles } from '@material-ui/core/styles';
 import Input from '@material-ui/core/Input';
 import Button from '@material-ui/core/Button';
 import Paper from '@material-ui/core/Paper';
-import ActiveUserType from 'src/types/ActiveUserType';
+import ActiveUserType from '../../types/ActiveUserType';
 
 const styles = theme => ({
     wrapper: {

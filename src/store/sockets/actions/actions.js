@@ -1,6 +1,6 @@
 import SocketIOClient from 'socket.io-client';
-import { redirect } from 'src/store/services/actions';
-import { getChatId } from 'src/store/chats/reducers/chats';
+import { redirect } from '../../services/actions';
+import { getChatId } from '../../chats/reducers/chats';
 import * as types from './actionTypes';
 
 let socket = null;
