@@ -19,8 +19,6 @@ const mapDispatchToProps = dispatch => bindActionCreators(
 class PrivateRoute extends React.Component {
     static propTypes = {
         isAuthenticated: PropTypes.bool.isRequired,
-        // TODO: узнать какой тип писать сюда
-        // component: PropTypes..isRequired,
         getUser: PropTypes.func.isRequired,
     };
 

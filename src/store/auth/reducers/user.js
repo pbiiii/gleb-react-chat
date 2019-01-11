@@ -14,7 +14,7 @@ export const user = (state = initialState, action) => {
         case types.REGISTER_SUCCESS:
         case types.LOGIN_SUCCESS: {
             const { token: newToken, user: info } = action.payload;
-            localStorage.setItem('token', token);
+            localStorage.setItem('token', newToken);
             return {
                 ...state,
                 token: newToken,
@@ -23,6 +23,7 @@ export const user = (state = initialState, action) => {
             };
         }
         case types.GET_USER_SUCCESS:
+        case types.EDIT_USER_SUCCESS:
             return {
                 ...state,
                 info: action.payload.user,

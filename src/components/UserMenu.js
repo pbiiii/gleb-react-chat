@@ -44,7 +44,7 @@ class UserMenu extends React.Component {
 
     handleToggleModal = () => {
         const { modalIsOpen } = this.state;
-        this.setState({ modalIsOpen });
+        this.setState({ ...this.state, modalIsOpen: !modalIsOpen });
         this.closeMenu();
     };
 
@@ -62,8 +62,9 @@ class UserMenu extends React.Component {
     updateProfile = () => {
         const { editUser } = this.props;
         const { editProfileForm } = this.state;
-        editUser({ ...editProfileForm });
-        this.handleToggleModal();
+        editUser({ ...editProfileForm }).then(() => {
+            this.handleToggleModal();
+        });
     };
 
     handleLogout = () => {
