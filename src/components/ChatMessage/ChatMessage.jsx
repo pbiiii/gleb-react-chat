@@ -21,7 +21,7 @@ const ChatMessage = ({
             <div className={classNames('status-message-wrapper')}>
                 <Typography className="message">
                     <Typography variant="caption">{username}</Typography>
-                    <Typography variant="body1">{content}</Typography>
+                    <Typography variant="caption">{content}</Typography>
                     <Typography variant="caption">{moment(createdAt).fromNow()}</Typography>
                 </Typography>
             </div>
@@ -43,8 +43,12 @@ ChatMessage.propTypes = {
     activeUser: PropTypes.shape(ActiveUserType).isRequired,
     sender: PropTypes.shape(UserType).isRequired,
     content: PropTypes.string.isRequired,
-    statusMessage: PropTypes.bool.isRequired,
+    statusMessage: PropTypes.bool,
     createdAt: PropTypes.string.isRequired,
+};
+
+ChatMessage.defaultProps = {
+    statusMessage: null,
 };
 
 export default ChatMessage;

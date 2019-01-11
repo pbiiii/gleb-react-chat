@@ -7,11 +7,9 @@ import ChatScreen from '../containers/ChatScreen';
 
 export default () => (
     <Router history={history}>
-        <div>
-            <Switch>
-                <Route path="/" exact component={AuthScreen} />
-                <PrivateRoute path="/chat/:chatId?" component={ChatScreen} />
-            </Switch>
-        </div>
+        <Switch>
+            <Route path="/" exact component={AuthScreen} />
+            <PrivateRoute path="/chat/:chatId?" component={ChatScreen} />
+        </Switch>
     </Router>
 );

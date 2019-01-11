@@ -22,25 +22,50 @@ const styles = theme => ({
     },
 });
 
-const ChatMessageList = ({ classes, messages, activeUser }) => {
-    const messagesExists = messages && messages.length > 0;
-    return (
-        <div className={classNames(classes.messagesWrapper, !messagesExists && classes.noMessages)}>
-            {messagesExists ? (
-                messages.map(message => (
-                    <ChatMessage key={message._id} activeUser={activeUser} {...message} />
-                ))
-            ) : (
-                <Typography variant="h5">There is no messages yet</Typography>
-            )}
-        </div>
-    );
-};
+class ChatMessageList extends React.Component {
+    static propTypes = {
+        classes: PropTypes.objectOf(PropTypes.string).isRequired,
+        activeUser: PropTypes.shape(ActiveUserType).isRequired,
+        messages: PropTypes.arrayOf(PropTypes.shape(MessageType)).isRequired,
+    };
 
-ChatMessageList.propTypes = {
-    classes: PropTypes.objectOf(PropTypes.string).isRequired,
-    activeUser: PropTypes.shape(ActiveUserType).isRequired,
-    messages: PropTypes.arrayOf(PropTypes.shape(MessageType)).isRequired,
-};
+    componentDidMount() {
+        this.scrollDown();
+    }
+
+    componentDidUpdate() {
+        this.scrollDown();
+    }
+
+    scrollDown() {
+        if (this.messagesWrapper) {
+            this.messagesWrapper.scrollTop = this.messagesWrapper.scrollHeight;
+        }
+    }
+
+    render() {
+        const { classes, messages, activeUser } = this.props;
+        const messagesExists = messages && messages.length > 0;
+        return (
+            <div
+                className={classNames(
+                    classes.messagesWrapper,
+                    !messagesExists && classes.noMessages,
+                )}
+                ref={(wrapper) => {
+                    this.messagesWrapper = wrapper;
+                }}
+            >
+                {messagesExists ? (
+                    messages.map(message => (
+                        <ChatMessage key={message._id} activeUser={activeUser} {...message} />
+                    ))
+                ) : (
+                    <Typography variant="h5">There is no messages yet</Typography>
+                )}
+            </div>
+        );
+    }
+}
 
 export default withStyles(styles)(ChatMessageList);
