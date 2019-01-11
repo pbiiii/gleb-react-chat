@@ -45,22 +45,36 @@ class AddChatButton extends React.Component {
     toggleModal = () => {
         const { open } = this.state;
         this.setState({
+            ...this.state,
             open: !open,
         });
     };
 
     onTitleChange = (event) => {
         const { value } = event.target;
+        const { title } = this.state;
         this.setState({
-            title: { value },
+            ...this.state,
+            title: {
+                ...title,
+                value,
+            },
         });
     };
 
     handleCreateClick = () => {
         const { onCreateChat } = this.props;
         const { title } = this.state;
-        onCreateChat(title.value);
-        this.toggleModal();
+        onCreateChat(title.value).then(() => {
+            this.toggleModal();
+            this.setState({
+                ...this.state,
+                title: {
+                    value: '',
+                    valid: true,
+                },
+            });
+        });
     };
 
     render() {
