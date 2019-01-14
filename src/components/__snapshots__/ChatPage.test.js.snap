@@ -1,0 +1,17 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`render correctly 1`] = `
+<div
+  className="ChatPage-root-5"
+>
+  AppTopBar
+  ChatDrawer
+  <main
+    className="ChatPage-content-7"
+  >
+    ChatMessageList
+    ChatMessageInput
+  </main>
+  ErrorMessage
+</div>
+`;

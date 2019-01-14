@@ -1,0 +1,173 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`render correctly 1`] = `
+<div
+  className="MuiDrawer-root-168 MuiDrawer-docked-169 ChatDrawer-drawer-164"
+>
+  <div
+    className="MuiPaper-root-180 MuiPaper-elevation0-182 MuiDrawer-paper-170 ChatDrawer-drawerPaper-165 MuiDrawer-paperAnchorLeft-171 MuiDrawer-paperAnchorDockedLeft-175"
+  >
+    <div
+      className="DrawerSearchInput-toolbar-207"
+    >
+      <div
+        className="MuiInputBase-root-222 MuiInput-root-209 MuiInput-underline-213 DrawerSearchInput-toolbarInput-208"
+        onClick={[Function]}
+      >
+        <input
+          className="MuiInputBase-input-232 MuiInput-input-217"
+          onBlur={[Function]}
+          onChange={[Function]}
+          onFocus={[Function]}
+          placeholder="Search chats..."
+          type="text"
+        />
+      </div>
+    </div>
+    <hr
+      className="MuiDivider-root-239"
+    />
+    <ul
+      className="MuiList-root-246 MuiList-padding-247 ChatsList-list-245"
+    >
+      <p
+        className="MuiTypography-root-250 MuiTypography-body1-259 ChatsList-subtitle-244"
+      >
+        There is no chats yet...
+      </p>
+    </ul>
+    <button
+      className="MuiButtonBase-root-298 MuiFab-root-288 MuiFab-primary-290 AddChatButton-fab-285"
+      disabled={false}
+      onBlur={[Function]}
+      onClick={[Function]}
+      onFocus={[Function]}
+      onKeyDown={[Function]}
+      onKeyUp={[Function]}
+      onMouseDown={[Function]}
+      onMouseLeave={[Function]}
+      onMouseUp={[Function]}
+      onTouchEnd={[Function]}
+      onTouchMove={[Function]}
+      onTouchStart={[Function]}
+      tabIndex="0"
+      type="button"
+    >
+      <span
+        className="MuiFab-label-289"
+      >
+        <svg
+          aria-hidden="true"
+          className="MuiSvgIcon-root-301"
+          focusable="false"
+          role="presentation"
+          viewBox="0 0 24 24"
+        >
+          <path
+            d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"
+          />
+          <path
+            d="M0 0h24v24H0z"
+            fill="none"
+          />
+        </svg>
+      </span>
+      <span
+        className="MuiTouchRipple-root-318"
+      />
+    </button>
+    <div
+      className="MuiBottomNavigation-root-312"
+    >
+      <button
+        className="MuiButtonBase-root-298 MuiBottomNavigationAction-root-313 MuiBottomNavigationAction-selected-314"
+        onBlur={[Function]}
+        onClick={[Function]}
+        onFocus={[Function]}
+        onKeyDown={[Function]}
+        onKeyUp={[Function]}
+        onMouseDown={[Function]}
+        onMouseLeave={[Function]}
+        onMouseUp={[Function]}
+        onTouchEnd={[Function]}
+        onTouchMove={[Function]}
+        onTouchStart={[Function]}
+        tabIndex="0"
+        type="button"
+      >
+        <span
+          className="MuiBottomNavigationAction-wrapper-316"
+        >
+          <svg
+            aria-hidden="true"
+            className="MuiSvgIcon-root-301"
+            focusable="false"
+            role="presentation"
+            viewBox="0 0 24 24"
+          >
+            <path
+              d="M0 0h24v24H0z"
+              fill="none"
+            />
+            <path
+              d="M13 3c-4.97 0-9 4.03-9 9H1l3.89 3.89.07.14L9 12H6c0-3.87 3.13-7 7-7s7 3.13 7 7-3.13 7-7 7c-1.93 0-3.68-.79-4.94-2.06l-1.42 1.42C8.27 19.99 10.51 21 13 21c4.97 0 9-4.03 9-9s-4.03-9-9-9zm-1 5v5l4.28 2.54.72-1.21-3.5-2.08V8H12z"
+            />
+          </svg>
+          <span
+            className="MuiBottomNavigationAction-label-317 MuiBottomNavigationAction-selected-314"
+          >
+            My Chats
+          </span>
+        </span>
+        <span
+          className="MuiTouchRipple-root-318"
+        />
+      </button>
+      <button
+        className="MuiButtonBase-root-298 MuiBottomNavigationAction-root-313"
+        onBlur={[Function]}
+        onClick={[Function]}
+        onFocus={[Function]}
+        onKeyDown={[Function]}
+        onKeyUp={[Function]}
+        onMouseDown={[Function]}
+        onMouseLeave={[Function]}
+        onMouseUp={[Function]}
+        onTouchEnd={[Function]}
+        onTouchMove={[Function]}
+        onTouchStart={[Function]}
+        tabIndex="0"
+        type="button"
+      >
+        <span
+          className="MuiBottomNavigationAction-wrapper-316"
+        >
+          <svg
+            aria-hidden="true"
+            className="MuiSvgIcon-root-301"
+            focusable="false"
+            role="presentation"
+            viewBox="0 0 24 24"
+          >
+            <path
+              d="M12 10.9c-.61 0-1.1.49-1.1 1.1s.49 1.1 1.1 1.1c.61 0 1.1-.49 1.1-1.1s-.49-1.1-1.1-1.1zM12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm2.19 12.19L6 18l3.81-8.19L18 6l-3.81 8.19z"
+            />
+            <path
+              d="M0 0h24v24H0z"
+              fill="none"
+            />
+          </svg>
+          <span
+            className="MuiBottomNavigationAction-label-317"
+          >
+            Explore
+          </span>
+        </span>
+        <span
+          className="MuiTouchRipple-root-318"
+        />
+      </button>
+    </div>
+  </div>
+</div>
+`;

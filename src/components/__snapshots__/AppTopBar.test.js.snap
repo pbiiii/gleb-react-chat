@@ -1,0 +1,14 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`render correctly 1`] = `
+<header
+  className="MuiPaper-root-54 MuiPaper-elevation4-60 MuiAppBar-root-45 MuiAppBar-positionFixed-46 MuiAppBar-colorPrimary-52 mui-fixed AppTopBar-appBar-43"
+>
+  <div
+    className="MuiToolbar-root-81 MuiToolbar-regular-83 MuiToolbar-gutters-82 AppTopBar-appBarTitle-44"
+  >
+    ChatMenu
+    UserMenu
+  </div>
+</header>
+`;
